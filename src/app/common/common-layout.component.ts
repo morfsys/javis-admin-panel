@@ -47,4 +47,20 @@ export class CommonLayoutComponent implements OnInit {
 
     ngOnInit(){
     }
+
+    menu = [
+        {
+            name: 'Company',
+            endpoint: 'company'
+        },
+        {
+            name: 'Geography',
+            children: [
+                {
+                    name: 'Country',
+                    endpoint: 'country'
+                }
+            ]
+        }
+    ]
 }

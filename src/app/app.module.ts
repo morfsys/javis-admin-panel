@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { NgSelectizeModule } from 'ng-selectize';
 
 //Layout Modules
 import { CommonLayoutComponent } from './common/common-layout.component';
@@ -19,21 +20,28 @@ import { AppRoutes } from './app.routing';
 
 // App Component
 import { AppComponent } from './app.component';
+import { SigninComponent } from './pages/signin/signin.component';
+import { CompanyComponent } from './pages/company/company.component';
+import { CountryComponent } from './pages/country/country.component';
 
 @NgModule({
     imports: [
         BrowserModule,
-        RouterModule.forRoot(AppRoutes, { useHash: true }),
+        RouterModule.forRoot(AppRoutes),
         NgbModule.forRoot(),
         FormsModule,
-        PerfectScrollbarModule
+        PerfectScrollbarModule,
+        NgSelectizeModule
     ],
     declarations: [
         AppComponent,
         CommonLayoutComponent,
         AuthenticationLayoutComponent,
         Sidebar_Directives,
-        Cards_Directives
+        Cards_Directives,
+        SigninComponent,
+        CompanyComponent,
+        CountryComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

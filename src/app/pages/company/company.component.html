@@ -1,0 +1,98 @@
+<div class="container-fluid">
+  <!-- <div class="page-title">
+    <h4>Company</h4>
+  </div> -->
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-heading border bottom">
+          Add New Company
+          <span class="float-right"><i class="ei-unchecked"></i></span>
+        </div>
+        <div class="card-block">
+          <div class="mt-40">
+            <div class="row">
+              <div class="col-md-8 mx-auto">
+                <form autocomplete="off">
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="form-group">
+                        <label>Company Name</label>
+                        <input type="text" placeholder="Enter company name" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <label>Company Code</label>
+                        <input type="text" placeholder="Enter company code" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label>GSTIN</label>
+                        <input type="text" placeholder="Enter company GSTIN" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <label>Company PAN</label>
+                        <input type="text" placeholder="Enter company PAN" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-group">
+                            <label>Address</label>
+                            <input placeholder="Address Line 1" class="form-control" />
+                          </div>
+                          <div class="form-group">
+                            <label>Address 2</label>
+                            <input placeholder="Address Line 2" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-group">
+                            <label>Pincode</label>
+                            <input placeholder="Pin Code" class="form-control" />
+                          </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                          <div class="form-group">
+                            <label>City</label>
+                            <ng-selectize [config]="selectizeConfig" [options]="cityOptions"></ng-selectize>
+                            <div class="w-100 text-right">
+                                <small>+ Add new city</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="text-right mrg-top-5">
+                        <button type="submit" class="btn btn-primary m-0">Add Company</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
