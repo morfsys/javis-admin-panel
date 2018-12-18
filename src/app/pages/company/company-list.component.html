@@ -1,0 +1,46 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-heading border bottom">
+          Company List
+        </div>
+        <div class="card-block">
+            <button class="btn btn-primary float-right mr-0" (click)="addCompany()">Add company</button>
+            <div class="table-overflow">
+                <table class="table" >
+                    <thead>
+                        <th>Name</th>
+                        <th>GSTIN</th>
+                        <th>PAN</th>
+                        <th>City</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let it of items">
+                            <td>
+                                {{it.name}} ({{it.code}})
+                            </td>
+                            <td>
+                                {{it.gstin}}
+                            </td>
+                            <td>
+                                {{it.pan}}
+                            </td>
+                            <td>
+                                {{it.city}}
+                            </td>
+                            <td>
+                                <button class="btn btn-xs btn-primary" (click)="updateCompany(it)">Edit</button>
+                                <button class="btn btn-xs btn-danger" (click)="deleteCompany(it._id)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

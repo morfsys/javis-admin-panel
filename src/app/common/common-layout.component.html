@@ -27,7 +27,7 @@
                                 <span class="icon-holder">
                                     <i class="ti-home"></i>
                                 </span>
-                                <span class="title">Company</span>
+                                <span class="title">Manage Companies</span>
                             </a>
                            
                         </li>
@@ -36,15 +36,62 @@
                                 <span class="icon-holder">
                                     <i class="ti-layout-media-overlay"></i>
                                 </span>
-                                <span class="title">Geography</span>
+                                <span class="title">Manage Outlets</span>
                                 <span class="arrow">
                                     <i class="ti-angle-right"></i>
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
+                                    <a [routerLink]="['/retailer']">Retailer</a>
+                                </li>              
+                                <li>
+                                    <a [routerLink]="['/channel']">Channel</a>
+                                </li>      
+                            </ul>
+                        </li> 
+                        <li class="nav-item dropdown" >
+                            <a class="dropdown-toggle" href="javascript:void(0);" >
+                                <span class="icon-holder">
+                                    <i class="ti-layout-media-overlay"></i>
+                                </span>
+                                <span class="title">Define Locations</span>
+                                <span class="arrow">
+                                    <i class="ti-angle-right"></i>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a [routerLink]="['/area']">Area</a>
+                                </li>              
+                                <li>
+                                    <a [routerLink]="['/city']">City</a>
+                                </li>              
+                                <li>
+                                    <a [routerLink]="['/state']">State</a>
+                                </li>              
+                                <li>
                                     <a [routerLink]="['/country']">Country</a>
                                 </li>              
+                            </ul>
+                        </li> 
+                        <li class="nav-item dropdown" >
+                            <a class="dropdown-toggle" href="javascript:void(0);" >
+                                <span class="icon-holder">
+                                    <i class="ti-layout-media-overlay"></i>
+                                </span>
+                                <span class="title">Miscelleneous</span>
+                                <span class="arrow">
+                                    <i class="ti-angle-right"></i>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a [routerLink]="['/bank']">Bank</a>
+                                </li>              
+                                <li>
+                                    <a [routerLink]="['/unit-quantity-code']">Unit Quantity Code</a>
+                                </li>     
                             </ul>
                         </li> 
                         <!-- <li class="nav-item dropdown">
@@ -98,8 +145,8 @@
                         </ul>
                         <ul class="nav-right">
                             <li>
-                                <a class="side-panel-toggle" href="javascript:void(0);" (click)="app.layout.sidePanelOpen = !app.layout.sidePanelOpen">
-                                    <i class="ti-align-right"></i>
+                                <a class="side-panel-toggle" href="javascript:void(0);" [routerLink]="['/signin']">
+                                    <i class="ei-power-button"></i>
                                 </a>
                             </li>
                         </ul>

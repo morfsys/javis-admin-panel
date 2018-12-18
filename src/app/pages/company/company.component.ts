@@ -1,40 +1,43 @@
 import { Component, OnInit } from '@angular/core';
+import { CompanyService } from './company.service';
 
 @Component({
   selector: 'app-company',
-  templateUrl: './company.component.html',
-  styleUrls: ['./company.component.css']
+  templateUrl: './company.component.html'
 })
 export class CompanyComponent implements OnInit {
 
-  
- 
 
-  constructor() { }
+  companies: Array<any>;
+  viewCompany = false;
+  editId: number = -1;
+  company = {};
+
+  constructor(
+    private companyService: CompanyService
+  ) { }
 
   ngOnInit() {
+    this.getCompanies();
   }
 
-  selectizeConfig: any = {
-    labelField: 'label',
-    valueField: 'value',
-    searchField: ['label']
-};
-
-cityOptions: any = [
-  {
-      label: 'Mumbai',
-      value: 'mumbai',
-      code: 'MUM'
-  }, {
-      label: 'Pune',
-      value: 'pune',
-      code: 'PUNE'
-  }, {
-      label: 'New Delhi',
-      value: 'newdelhi',
-      code: 'DEL'
+  getCompanies() {
+    this.companyService.getCompanies().subscribe(companies => {
+      this.companies = companies;
+      this.viewCompany = false;
+    });
   }
-];
+  companySubmitted() {
+    this.getCompanies();
+  }
+
+  editCompany(company) {
+    this.company = company;
+    this.viewCompany = true;
+  }
+
+
+
+
 
 }

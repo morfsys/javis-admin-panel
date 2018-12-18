@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prepublish": "ng build",
+    "publish": "firebase deploy --project javis-b0398"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +29,7 @@
     "ammap3": "^3.21.13",
     "angular-archwizard": "^3.0.0",
     "angular-datatables": "^5.0.0",
+    "angular-in-memory-web-api": "^0.7.0",
     "angular2-moment": "^1.7.0",
     "ap-angular-fullcalendar": "^1.6.4",
     "bootstrap": "4.1.1",

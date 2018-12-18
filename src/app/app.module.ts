@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgSelectizeModule } from 'ng-selectize';
+import { DataTablesModule } from 'angular-datatables';
 
 //Layout Modules
 import { CommonLayoutComponent } from './common/common-layout.component';
@@ -22,7 +23,17 @@ import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { CompanyComponent } from './pages/company/company.component';
+import { CompanyViewComponent } from './pages/company/company-view.component';
 import { CountryComponent } from './pages/country/country.component';
+import { CompanyListComponent } from './pages/company/company-list.component';
+import { StateComponent } from './pages/state/state.component';
+import { CityComponent } from './pages/city/city.component';
+import { AddFormCityComponent } from './pages/city/add-form.city.component';
+import { RetailerComponent } from './pages/retailer/retailer.component';
+import { ChannelComponent } from './pages/channel/channel.component';
+import { AreaComponent } from './pages/area/area.component';
+import { BankComponent } from './pages/bank/bank.component';
+import { UnitQuantityCodeComponent } from './pages/unit-quantity-code/unit-quantity-code.component';
 
 @NgModule({
     imports: [
@@ -31,7 +42,8 @@ import { CountryComponent } from './pages/country/country.component';
         NgbModule.forRoot(),
         FormsModule,
         PerfectScrollbarModule,
-        NgSelectizeModule
+        NgSelectizeModule,
+        DataTablesModule
     ],
     declarations: [
         AppComponent,
@@ -41,7 +53,17 @@ import { CountryComponent } from './pages/country/country.component';
         Cards_Directives,
         SigninComponent,
         CompanyComponent,
-        CountryComponent
+        CountryComponent,
+        CompanyListComponent,
+        CompanyViewComponent,
+        StateComponent,
+        CityComponent,
+        AddFormCityComponent,
+        RetailerComponent,
+        ChannelComponent,
+        AreaComponent,
+        BankComponent,
+        UnitQuantityCodeComponent
     ],
     providers: [],
     bootstrap: [AppComponent]
