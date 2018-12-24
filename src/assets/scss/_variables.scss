@@ -1,10 +1,10 @@
 //==================================
 // 	Fonts
 //==================================
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 
-
-$font-primary:            Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif !default;         // Primary font: Roboto
-$font-secondary:          Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif !default;         // Secondary font: Montserrat
+$font-primary:            'Roboto Slab', Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif !default;         // Primary font: Roboto
+$font-secondary:          'Roboto Slab', Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif !default;         // Secondary font: Montserrat
 
 
 //==================================
@@ -14,8 +14,9 @@ $font-secondary:          Roboto, -apple-system, system-ui, BlinkMacSystemFont, 
 $default-dark:            #515365;
 $default-white:           #ffffff;
 $default-gray:            #f6f7fb;
+$default-javis:           #F6F2F6;
 $default-text-color:      #888da8;
-$default-primary:         #7774e7;
+$default-primary:         #922a8e;
 $default-success:         #37c936;
 $default-info :           #0f9aee;
 $default-warning:         #ffcc00;
@@ -37,7 +38,7 @@ $border-color:            #e6ecf5;
 $header-height:           65px;
 $offscreen-size:          280px;
 $collapsed-size:          70px;
-$side-nav-dark:           #313644;
+$side-nav-dark:           #2A0731;
 $side-nav-dark-font:      #99abb4;
 $side-nav-dark-border:    rgba(120,130,140,0.3);
 

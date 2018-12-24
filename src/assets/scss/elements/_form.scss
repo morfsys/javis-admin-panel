@@ -23,7 +23,7 @@ textarea {
 	&:focus {
 		outline: 0 none;
 		box-shadow: none;
-		border-color: lighten($default-info, 10%);		
+		border-color: lighten($default-primary, 10%);		
 	}	
 
 	&.input-sm {

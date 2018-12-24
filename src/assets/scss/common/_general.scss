@@ -12,7 +12,7 @@ html, html a, body {
 body {
    font-family: $font-primary;
    font-size: 14px;
-   background-color: $default-gray;
+   background-color: $default-javis;
    color: $default-text-color;
    line-height: 1.5;
    letter-spacing: 0.2px;
@@ -171,7 +171,7 @@ hr {
 }
 
 .bg-gray {
-	background-color: darken($default-gray, 3%) !important;
+	background-color: darken($default-javis, 3%) !important;
 }
 
 .bg-primary {

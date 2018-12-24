@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgSelectizeModule } from 'ng-selectize';
 import { DataTablesModule } from 'angular-datatables';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 //Layout Modules
 import { CommonLayoutComponent } from './common/common-layout.component';
@@ -34,6 +35,11 @@ import { ChannelComponent } from './pages/channel/channel.component';
 import { AreaComponent } from './pages/area/area.component';
 import { BankComponent } from './pages/bank/bank.component';
 import { UnitQuantityCodeComponent } from './pages/unit-quantity-code/unit-quantity-code.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ForceUppercaseDirective } from './directives/force-uppercase.directive';
+import { DataTableDirective } from './directives/data-table.directive';
+import { Bs4PopoverDirective } from './directives/bs4-popover.directive';
+import { ActionDotsComponent } from './components/action-dots/action-dots.component';
 
 @NgModule({
     imports: [
@@ -43,7 +49,8 @@ import { UnitQuantityCodeComponent } from './pages/unit-quantity-code/unit-quant
         FormsModule,
         PerfectScrollbarModule,
         NgSelectizeModule,
-        DataTablesModule
+        DataTablesModule,
+        ClickOutsideModule
     ],
     declarations: [
         AppComponent,
@@ -63,7 +70,12 @@ import { UnitQuantityCodeComponent } from './pages/unit-quantity-code/unit-quant
         ChannelComponent,
         AreaComponent,
         BankComponent,
-        UnitQuantityCodeComponent
+        UnitQuantityCodeComponent,
+        DashboardComponent,
+        ForceUppercaseDirective,
+        DataTableDirective,
+        Bs4PopoverDirective,
+        ActionDotsComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

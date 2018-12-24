@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CompanyService } from './company.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { CompanyService } from './company.service';
 })
 export class CompanyComponent implements OnInit {
 
+  @ViewChild('companyList') companyList;
 
   companies: Array<any>;
   viewCompany = false;
@@ -25,6 +26,9 @@ export class CompanyComponent implements OnInit {
     this.companyService.getCompanies().subscribe(companies => {
       this.companies = companies;
       this.viewCompany = false;
+      setTimeout(()=>{
+        this.companyList.reRenderTable();
+      }, 500);
     });
   }
   companySubmitted() {

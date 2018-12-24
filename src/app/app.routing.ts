@@ -15,6 +15,7 @@ import { StateComponent } from './pages/state/state.component';
 import { CityComponent } from './pages/city/city.component';
 import { BankComponent } from './pages/bank/bank.component';
 import { UnitQuantityCodeComponent } from './pages/unit-quantity-code/unit-quantity-code.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const AppRoutes: Routes = [
     {
@@ -23,14 +24,17 @@ export const AppRoutes: Routes = [
     },
     {
         path: '',
-        redirectTo: 'company',
-        pathMatch: 'full',
-    },
-    {
-        path: '',
         component: CommonLayoutComponent,
         children: [
-            
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'dashboard'
+            },
+            {
+                path: 'dashboard',
+                component: DashboardComponent
+            },
             {
                 path: 'company',
                 component: CompanyComponent

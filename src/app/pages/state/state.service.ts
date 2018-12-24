@@ -8,17 +8,17 @@ export class StateService {
 
   states: Array<any> = [
     {
-      name: 'Maharashtra',
+      name: 'MAHARASHTRA',
       code: 'MAH',
       country: 'India'
     },
     {
-      name: 'West Bengal',
+      name: 'WEST BENGAL',
       code: 'WB',
       country: 'India'
     },
     {
-      name: 'Uttar Pradesh',
+      name: 'UTTAR PRADESH',
       code: 'UP',
       country: 'India'
     }

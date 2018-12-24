@@ -1,4 +1,4 @@
-<div class="app" [ngClass]="
+<div class="app  side-nav-dark" [ngClass]="
     {
         'is-collapsed': app.layout.isMenuCollapsed,
         'is-opened': app.layout.isMenuOpened,
@@ -23,18 +23,27 @@
                     </div>
                     <ul class="side-nav-menu scrollable">
                         <li class="nav-item" routerLinkActive="active">
-                            <a  class="mrg-top-30"  [routerLink]="['/company']">
+                            <a  class="mrg-top-30"  [routerLink]="['/dashboard']">
                                 <span class="icon-holder">
-                                    <i class="ti-home"></i>
+                                    <i class="mfont mf-dashboard"></i>
+                                </span>
+                                <span class="title">Dashboard</span>
+                            </a>
+                           
+                        </li>
+                        <li class="nav-item" routerLinkActive="active">
+                            <a  class=""  [routerLink]="['/company']">
+                                <span class="icon-holder">
+                                    <i class="mfont mf-company-alt"></i>
                                 </span>
                                 <span class="title">Manage Companies</span>
                             </a>
                            
                         </li>
-                        <li class="nav-item dropdown" >
+                        <li class="nav-item dropdown"  routerLinkActive="active">
                             <a class="dropdown-toggle" href="javascript:void(0);" >
                                 <span class="icon-holder">
-                                    <i class="ti-layout-media-overlay"></i>
+                                    <i class="mfont mf-outlet"></i>
                                 </span>
                                 <span class="title">Manage Outlets</span>
                                 <span class="arrow">
@@ -42,18 +51,18 @@
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li>
+                                <li  routerLinkActive="active">
                                     <a [routerLink]="['/retailer']">Retailer</a>
                                 </li>              
-                                <li>
+                                <li  routerLinkActive="active">
                                     <a [routerLink]="['/channel']">Channel</a>
                                 </li>      
                             </ul>
                         </li> 
-                        <li class="nav-item dropdown" >
+                        <li class="nav-item dropdown"  routerLinkActive="active">
                             <a class="dropdown-toggle" href="javascript:void(0);" >
                                 <span class="icon-holder">
-                                    <i class="ti-layout-media-overlay"></i>
+                                    <i class="mfont mf-location"></i>
                                 </span>
                                 <span class="title">Define Locations</span>
                                 <span class="arrow">
@@ -61,24 +70,24 @@
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li>
+                                <li   routerLinkActive="active">
                                     <a [routerLink]="['/area']">Area</a>
                                 </li>              
-                                <li>
+                                <li   routerLinkActive="active">
                                     <a [routerLink]="['/city']">City</a>
                                 </li>              
-                                <li>
+                                <li   routerLinkActive="active">
                                     <a [routerLink]="['/state']">State</a>
                                 </li>              
-                                <li>
+                                <li   routerLinkActive="active">
                                     <a [routerLink]="['/country']">Country</a>
                                 </li>              
                             </ul>
                         </li> 
-                        <li class="nav-item dropdown" >
+                        <li class="nav-item dropdown"  routerLinkActive="active">
                             <a class="dropdown-toggle" href="javascript:void(0);" >
                                 <span class="icon-holder">
-                                    <i class="ti-layout-media-overlay"></i>
+                                    <i class="mfont mf-misc"></i>
                                 </span>
                                 <span class="title">Miscelleneous</span>
                                 <span class="arrow">
@@ -86,45 +95,15 @@
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li>
+                                <li   routerLinkActive="active">
                                     <a [routerLink]="['/bank']">Bank</a>
                                 </li>              
-                                <li>
+                                <li   routerLinkActive="active">
                                     <a [routerLink]="['/unit-quantity-code']">Unit Quantity Code</a>
                                 </li>     
                             </ul>
                         </li> 
-                        <!-- <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
-                                <span class="icon-holder">
-                                    <i class="ti-view-list-alt"></i>
-                                </span>
-                                <span class="title">Multi Level</span>
-                                <span class="arrow">
-                                    <i class="ti-angle-right"></i>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item dropdown">
-                                    <a href="javascript:void(0);">
-                                        <span>Level 1.2</span>
-                                    </a>
-                                </li>	
-                                <li class="nav-item dropdown">
-                                    <a href="javascript:void(0);">
-                                        <span>Level 1.1</span>
-                                        <span class="arrow">
-                                            <i class="ti-angle-right"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="javascript:void(0);">Level 2</a>
-                                        </li>         
-                                    </ul>
-                                </li>         
-                            </ul>
-                        </li> -->
+                        
                     </ul>
                 </div>
             </div>
@@ -144,10 +123,28 @@
                             </li>
                         </ul>
                         <ul class="nav-right">
-                            <li>
-                                <a class="side-panel-toggle" href="javascript:void(0);" [routerLink]="['/signin']">
-                                    <i class="ei-power-button"></i>
+                            <li class="user-profile dropdown">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                    <div class="user-info">
+                                        <span class="name pdd-right-5">Admin</span>
+                                        <i class="ti-angle-down font-size-10"></i>
+                                    </div>
                                 </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a>
+                                            <i class="ti-user pdd-right-10"></i>
+                                            <span>Profile</span>
+                                        </a>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <a [routerLink]="['/signin']">
+                                            <i class="ti-power-off pdd-right-10"></i>
+                                            <span>Logout</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>

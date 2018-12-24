@@ -6,16 +6,16 @@ import { of, Observable } from 'rxjs';
 })
 export class CompanyService {
   companies: Array<any> = [
-  //   {
-  //   name: "Dummy",
-  //   code: "DUM",
-  //   gstin: "AHJDK21321SDSA",
-  //   pan: "ASD321",
-  //   address_1: "Address line 1",
-  //   address_2: "Address line 2",
-  //   pincode: "400001",
-  //   city: "Mumbai"
-  // }
+    {
+    name: "Dummy",
+    code: "DUM",
+    gstin: "AHJDK21321SDSA",
+    pan: "ASD321",
+    address_1: "Address line 1",
+    address_2: "Address line 2",
+    pincode: "400001",
+    city: "MUMBAI"
+  }
 ];
   
 

@@ -1,44 +1,56 @@
 <div class="container-fluid">
 
   <div class="row">
+    <div class="col">
+      <div class="page-title">
+        <h4 [style.display]="'inline-block'">Company List</h4>
+        <button class="btn  btn-flat btn-sm float-right mr-0" (click)="addCompany()">Add company</button>
+      </div>
+    </div>
+    <div class="w-100"></div>
     <div class="col-12">
+
+
       <div class="card">
-        <div class="card-heading border bottom">
-          Company List
-        </div>
         <div class="card-block">
-            <button class="btn btn-primary float-right mr-0" (click)="addCompany()">Add company</button>
-            <div class="table-overflow">
-                <table class="table" >
-                    <thead>
-                        <th>Name</th>
-                        <th>GSTIN</th>
-                        <th>PAN</th>
-                        <th>City</th>
-                        <th>Action</th>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let it of items">
-                            <td>
-                                {{it.name}} ({{it.code}})
-                            </td>
-                            <td>
-                                {{it.gstin}}
-                            </td>
-                            <td>
-                                {{it.pan}}
-                            </td>
-                            <td>
-                                {{it.city}}
-                            </td>
-                            <td>
-                                <button class="btn btn-xs btn-primary" (click)="updateCompany(it)">Edit</button>
-                                <button class="btn btn-xs btn-danger" (click)="deleteCompany(it._id)">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+
+          <div class="table-overflow">
+            <table class="table" appDataTable #companyList="appDataTable">
+              <thead>
+                <tr>
+                  <th>Company name</th>
+                  <th>Company code</th>
+                  <th>GSTIN</th>
+                  <th>PAN</th>
+                  <th>City</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let it of items" class="cursor-pointer">
+                  <td>
+                    <a href="javascript: void();" (click)="updateCompany(it)">{{it.name}}</a>
+                  </td>
+                  <td>
+                    {{it.code}}
+                  </td>
+                  <td>
+                    {{it.gstin}}
+                  </td>
+                  <td>
+                    {{it.pan}}
+                  </td>
+                  <td>
+                    {{it.city}}
+                  </td>
+                  <td class="py-1">
+                    <!-- <button class="btn btn-xs btn-danger" (click)="deleteCompany(it._id)">Delete</button> -->
+                    <app-action-dots class="text-center" [action-items]="listActionItems" [item]="it"></app-action-dots>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

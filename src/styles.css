@@ -2,8 +2,41 @@
 .cursor-pointer {
     cursor: pointer;
 }
+ng-selectize.ng-invalid .selectize-control div.selectize-input {
+    border-color: #dc3545 !important;
+}
 
+input, textarea {
+    text-transform: uppercase;
+}
 ng-selectize.ng-invalid.is-invalid .selectize-control div.selectize-input {
     border-color: #dc3545 !important;
+}
+ng-selectize.is-invalid ~ .invalid-feedback {
+    display: block;
+    margin-top: -1px;
+}
+
+.card-title{
+    display: inline-block;
+}
+
+
+/* BOOTSTRAP OVERRIDE */
+
+/* .side-nav .side-nav-inner .side-nav-menu li a {
+    color: #888da8 !important;
+} */
+.side-nav .side-nav-inner .side-nav-menu li a:hover .icon-holder {
+    color: inherit;
+}
+.side-nav .side-nav-inner .side-nav-menu li a:focus .icon-holder{
+    color: #888da8 !important;
+}
+.side-nav .side-nav-inner .side-nav-menu li.dropdown.open > a .icon-holder {
+    color: #888da8;
+}
+.side-nav .side-nav-inner .side-nav-menu li.active a  .icon-holder{
+    color: #FA2F63 !important;
 }
 

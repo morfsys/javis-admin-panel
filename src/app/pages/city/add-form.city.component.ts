@@ -10,44 +10,59 @@ declare var $: any;
         <div class="row">
             <div class="col">
             <div class="form-group">
-                <label>City Name*</label>
-                <input placeholder="City name" type="text" class="form-control" name="cityName" [(ngModel)]="city.name" required>
+                <label>City Name</label>
+                <input placeholder="City name" #cityField="ngModel" type="text" class="form-control" [class.is-invalid]="(formSubmitted || cityField.touched) && !cityField.valid" name="cityName" [(ngModel)]="city.name" required pattern="[\\w]+">
+                <div class="invalid-feedback">
+                    City is required.
+                </div>
             </div>
             </div>
             <div class="w-100 d-md-none"></div>
             <div class="col">
             <div class="form-group">
-                <label>City Code*</label>
-                <input placeholder="City code" type="text" class="form-control" name="cityCode" [(ngModel)]="city.code" required>
+                <label>City Code</label>
+                <input placeholder="City code"  #codeField="ngModel" type="text" class="form-control" [class.is-invalid]="(formSubmitted || codeField.touched) && !codeField.valid" name="cityName" name="cityCode" [(ngModel)]="city.code" required>
+                <div class="invalid-feedback">
+                    Code is required.
+                </div>
             </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
             <div class="form-group">
-                <label>Population*</label>
-                <input placeholder="Population" type="number" class="form-control" name="population" [(ngModel)]="city.population" required>
+                <label>Population</label>
+                <input placeholder="Population"  #popField="ngModel" type="number" class="form-control" [class.is-invalid]="(formSubmitted || popField.touched) && !popField.valid" name="cityName" name="population" [(ngModel)]="city.population" required>
+                <div class="invalid-feedback">
+                    Population is required.
+                </div>
             </div>
             </div>
             <div class="w-100 d-md-none"></div>
             <div class="col">
             <div class="form-group">
-                <label>STD code*</label>
-                <input placeholder="STD Code" type="number" class="form-control" name="stdCode" [(ngModel)]="city.stdCode" required>
+                <label>STD code</label>
+                <input placeholder="STD Code" type="number"  #stdCode="ngModel" class="form-control" [class.is-invalid]="(formSubmitted || stdCode.touched) && !stdCode.valid" name="cityName" name="stdCode" [(ngModel)]="city.stdCode" required pattern="['\\d']{4}">
+                <div class="invalid-feedback">
+                    STD code is required.
+                </div>
             </div>
             </div>
             <div class="w-100 d-md-none"></div>
             <div class="col">
             <div class="form-group">
-                <label>State*</label>
-                <ng-selectize name="state" [config]="selectizeConfig" [options]="stateOptions" [(ngModel)]="city.state" required></ng-selectize>
+                <label>State</label>
+                <ng-selectize name="state" #stateField="ngModel" placeholder="SELECT STATE" [class.is-invalid]="(formSubmitted || cityField.touched) && !cityField.valid" name="cityName" [config]="selectizeConfig" [options]="stateOptions" [(ngModel)]="city.state" required></ng-selectize>
+                <div class="invalid-feedback">
+                    State is required.
+                </div>
             </div>
             </div>
         </div>
-        <div [style.display]="formSubmitted && !cityform.form.valid  ? 'inherit':'none'" class="alert alert-danger">Required fields missing</div>
         <button type="submit" [style.display]="'none'" id="submit-button"></button>
     </form>
-  `
+  `,
+  styleUrls: ['./add-form.city.component.css']
 })
 export class AddFormCityComponent implements OnInit {
 
@@ -63,7 +78,6 @@ export class AddFormCityComponent implements OnInit {
     ngOnInit() {
         this.populateStateOptions();
         this.cityService.issueSubmit.subscribe(()=>{
-            // $(this.cityForm.nativeElement).find('#submit-button').click();
             this.addCity(this.cityForm.form);
         })
     }
@@ -93,7 +107,10 @@ export class AddFormCityComponent implements OnInit {
             population: 0,
             stdCode: "",
             state: ''
-        }, this.city)).subscribe(city=>{
+        }, this.city, {
+            name: this.city.name.toUpperCase(),
+            code: this.city.code.toUpperCase()
+        })).subscribe(city=>{
             this.postSubmit.emit(city);
         })
     }

@@ -8,25 +8,25 @@ export class CityService {
 
   cities: Array<any> = [
     {
-      name: "Mumbai",
+      name: "MUMBAI",
       code: "MUM",
       population: 2500000,
       stdCode: "400001",
-      state: "Maharashtra"
+      state: "MAHARASHTRA"
     },
     {
-      name: "Pune",
+      name: "PUNE",
       code: "PUN",
       population: 2500000,
       stdCode: "300001",
-      state: "Maharashtra"
+      state: "MAHARASHTRA"
     },
     {
-      name: "Kolkata",
+      name: "KOLKATA",
       code: "KOL",
       population: 2500000,
       stdCode: "910001",
-      state: "West Bengal"
+      state: "WEST BENGAL"
     },
   ]
   constructor() { }

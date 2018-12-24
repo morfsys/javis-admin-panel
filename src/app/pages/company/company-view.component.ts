@@ -6,14 +6,21 @@ declare var $: any;
 
 @Component({
     selector: 'app-company-view',
-    templateUrl: './company-view.component.html',
-    styleUrls: ['./company-view.component.css']
+    templateUrl: './company-view.component.html'
 })
 export class CompanyViewComponent implements OnInit {
 
 
     @Input('view-item') item = {
-        _id: 0
+        _id: 0,
+        name: '',
+        code: '',
+        gstin: '',
+        pan: '',
+        pincode: '',
+        address_1: '',
+        address_2: '',
+        city: ''
     };
     @Input('cancel-allowed') cancelAllowed = false;
     @Output() postSubmit = new EventEmitter();
@@ -37,13 +44,21 @@ export class CompanyViewComponent implements OnInit {
     cityOptions: any = [];
     companySubmitted = false;
     addCompany(form) {
+        
         this.companySubmitted = true;
-        console.log(form.valid)
         if(!form.valid) {
             return false;
         }
         // TODO: Logic to add company
-        this.companyService.addCompany(Object.assign({_id: 0}, this.item)).subscribe(company => {
+        // let {name, code, gstin, pan, pincode, city, address_1, address_2} = this.item;
+        this.companyService.addCompany(Object.assign({_id: 0}, this.item, {
+            name: this.item.name.toUpperCase(),
+            code: this.item.code.toUpperCase(),
+            gstin: this.item.gstin.toUpperCase(),
+            pan: this.item.pan.toUpperCase(),
+            address_1: this.item.address_1.toUpperCase(),
+            address_2: this.item.address_2.toUpperCase()
+        })).subscribe(company => {
             
             this.postSubmit.emit();
         })

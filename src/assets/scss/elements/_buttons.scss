@@ -34,7 +34,7 @@ button {
 	letter-spacing: 1px;
     font-size: 13px;
     padding: 10px 20px;
-    border-radius: 6px;
+    border-radius: 4px;
 	margin-right: 5px;
 	margin-bottom: 10px;
 	@include transition(all 0.3s ease-in-out); 
@@ -490,13 +490,13 @@ button {
 
 .btn-flat {
 	border: 0px;
-	color: desaturate($default-text-color, 7%);
+	color: desaturate($default-primary, 7%);
 	background-color: transparent;
 	
 	&:hover,
 	&:focus {
 		@include background-opacity($border-color, 0.55); 
-		color: darken($default-text-color, 10%);
+		color: darken($default-primary, 10%);
 	}
 }
 

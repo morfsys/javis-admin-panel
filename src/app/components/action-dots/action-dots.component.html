@@ -1,0 +1,19 @@
+<div class="user-profile dropdown">
+  <button class="btn btn-icon btn-flat btn-rounded dropdown-toggle" data-toggle="dropdown" (click)="openPopup()">
+    <i class="ti-more-alt"></i>
+  </button>
+  <!-- <div [style.display]="showPopup?'inherit':'none'" class="popover fade show bs-popover-bottom" role="tooltip" id="popover45037"
+    x-placement="bottom" style="position: absolute;  top: 30px; left: 0px; " (clickOutside)="clickedOutside()">
+    <div class="arrow" style="left: 30px;"></div>
+    <div class="popover-body p-2">
+      <button *ngFor="let it of actionItems; let i=index;" [class]="'w-100 '+(i<actionItems.length-1?'mb-2':'m-0')+' '+it.class"
+        (click)="it.action($event, item)">{{it.name}}</button>
+    </div>
+  </div> -->
+  <ul class="dropdown-menu">
+    <li *ngFor="let it of actionItems; let i=index;" class="cursor-pointer" (click)="it.action($event, item)">
+      <i [class]="it.icon+' pdd-right-10'"></i>
+      <span>{{it.name}}</span>
+    </li>
+  </ul>
+</div>
