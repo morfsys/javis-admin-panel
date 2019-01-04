@@ -52,7 +52,7 @@ declare var $: any;
             <div class="col">
             <div class="form-group">
                 <label>State</label>
-                <ng-selectize name="state" #stateField="ngModel" placeholder="SELECT STATE" [class.is-invalid]="(formSubmitted || cityField.touched) && !cityField.valid" name="cityName" [config]="selectizeConfig" [options]="stateOptions" [(ngModel)]="city.state" required></ng-selectize>
+                <ng-selectize name="state" #stateField="ngModel" placeholder="SELECT STATE" [class.is-invalid]="(formSubmitted || stateField.touched) && !stateField.valid" name="stateField" [config]="selectizeConfig" [options]="stateOptions" [(ngModel)]="city.state" required></ng-selectize>
                 <div class="invalid-feedback">
                     State is required.
                 </div>

@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'javis-admin-icons';
+  src:  url('fonts/javis-admin-icons.eot?cpccvz');
+  src:  url('fonts/javis-admin-icons.eot?cpccvz#iefix') format('embedded-opentype'),
+    url('fonts/javis-admin-icons.ttf?cpccvz') format('truetype'),
+    url('fonts/javis-admin-icons.woff?cpccvz') format('woff'),
+    url('fonts/javis-admin-icons.svg?cpccvz#javis-admin-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.mfont {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'javis-admin-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mf-dashboard:before {
+  content: "\e900";
+}
+.mf-location:before {
+  content: "\e901";
+}
+.mf-misc:before {
+  content: "\e902";
+}
+.mf-company:before {
+  content: "\e903";
+}
+.mf-outlet:before {
+  content: "\e904";
+}

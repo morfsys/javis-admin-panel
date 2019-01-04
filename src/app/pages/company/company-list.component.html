@@ -27,9 +27,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let it of items" class="cursor-pointer">
+                <tr *ngFor="let it of items">
                   <td>
-                    <a href="javascript: void();" (click)="updateCompany(it)">{{it.name}}</a>
+                    <a href="javascript: void(0);" (click)="updateCompany(it)">{{it.name}}</a>
                   </td>
                   <td>
                     {{it.code}}
@@ -44,7 +44,6 @@
                     {{it.city}}
                   </td>
                   <td class="py-1">
-                    <!-- <button class="btn btn-xs btn-danger" (click)="deleteCompany(it._id)">Delete</button> -->
                     <app-action-dots class="text-center" [action-items]="listActionItems" [item]="it"></app-action-dots>
                   </td>
                 </tr>

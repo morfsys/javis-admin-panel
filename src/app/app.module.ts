@@ -40,6 +40,7 @@ import { ForceUppercaseDirective } from './directives/force-uppercase.directive'
 import { DataTableDirective } from './directives/data-table.directive';
 import { Bs4PopoverDirective } from './directives/bs4-popover.directive';
 import { ActionDotsComponent } from './components/action-dots/action-dots.component';
+import { NgSelectizeDirective } from './directives/ng-selectize.directive';
 
 @NgModule({
     imports: [
@@ -75,7 +76,8 @@ import { ActionDotsComponent } from './components/action-dots/action-dots.compon
         ForceUppercaseDirective,
         DataTableDirective,
         Bs4PopoverDirective,
-        ActionDotsComponent
+        ActionDotsComponent,
+        NgSelectizeDirective
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -14,7 +14,7 @@
           <div class="mt-4">
             <div class="row">
               <div class="col-md-8 mx-auto">
-                <form autocomplete="off" (submit)="addCompany(companyForm)" #companyForm="ngForm">
+                <form autocomplete="off" (submit)="addCompany(companyForm)" #companyForm="ngForm" class="uppercase-form">
                   <div class="row">
                     <div class="col col-md-8">
                       <div class="form-group">
@@ -92,7 +92,7 @@
                     <div class="col">
                       <div class="form-group">
                         <label>City</label>
-                        <ng-selectize *ngIf="showCitySelect" #city [class.is-invalid]="companySubmitted && !city.valid" placeholder="SELECT CITY" name="city" [config]="selectizeConfig" [options]="cityOptions" [(ngModel)]="item.city" required></ng-selectize>
+                        <ng-selectize *ngIf="showCitySelect" #city="ngSelectize" [class.is-invalid]="companySubmitted && !city.hasNgValid" placeholder="SELECT CITY" name="city" [config]="selectizeConfig" [options]="cityOptions" [(ngModel)]="item.city" required></ng-selectize>
                         <div class="invalid-feedback">
                             City is required.
                           </div>

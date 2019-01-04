@@ -50,7 +50,6 @@ export class CompanyViewComponent implements OnInit {
             return false;
         }
         // TODO: Logic to add company
-        // let {name, code, gstin, pan, pincode, city, address_1, address_2} = this.item;
         this.companyService.addCompany(Object.assign({_id: 0}, this.item, {
             name: this.item.name.toUpperCase(),
             code: this.item.code.toUpperCase(),

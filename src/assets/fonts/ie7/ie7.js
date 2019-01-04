@@ -10,11 +10,14 @@
 (function() {
 	function addIcon(el, entity) {
 		var html = el.innerHTML;
-		el.innerHTML = '<span style="font-family: \'javis-admin-icons-c-o\'">' + entity + '</span>' + html;
+		el.innerHTML = '<span style="font-family: \'javis-admin-icons\'">' + entity + '</span>' + html;
 	}
 	var icons = {
-		'mf-outlet': '&#xe900;',
-		'mf-company': '&#xe901;',
+		'mf-dashboard': '&#xe900;',
+		'mf-location': '&#xe901;',
+		'mf-misc': '&#xe902;',
+		'mf-company': '&#xe903;',
+		'mf-outlet': '&#xe904;',
 		'0': 0
 		},
 		els = document.getElementsByTagName('*'),

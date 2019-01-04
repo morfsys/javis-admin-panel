@@ -31,6 +31,7 @@ export class CompanyComponent implements OnInit {
       }, 500);
     });
   }
+  // exported
   companySubmitted() {
     this.getCompanies();
   }

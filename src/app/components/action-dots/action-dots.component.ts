@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 declare var $: any;
 @Component({
   selector: 'app-action-dots',
@@ -9,10 +9,12 @@ export class ActionDotsComponent implements OnInit {
   @Input('action-items') actionItems = [] 
   @Input() item: any;
   showPopup: boolean = false;
-  constructor() { }
+  constructor(
+    private elem: ElementRef
+  ) { }
 
   ngOnInit() {
-    $('.dropdown-toggle').dropdown({
+    $(this.elem.nativeElement).find('.dropdown-toggle').dropdown({
       offset: '-120px, 0px'
     });
   }

@@ -1,18 +1,16 @@
 import { CompanyService } from './company.service';
-import { Component, OnInit, Input, EventEmitter, Output, OnDestroy, ViewChild } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-company-list',
   templateUrl: './company-list.component.html'
 })
-export class CompanyListComponent implements OnInit, OnDestroy {
-  @Input('items') items;
+export class CompanyListComponent implements OnInit {
+  @Input('items') items: any;
   @Output() updateItem = new EventEmitter();
   @Output() updateList = new EventEmitter();
-  @ViewChild('companyList') companyList; 
+  @ViewChild('companyList') companyList: any; 
   dtOptions: DataTables.Settings = {};
-  dtTrigger = new Subject();
 
   listActionItems:Array<any> = [
     {
@@ -46,10 +44,6 @@ export class CompanyListComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-    this.dtTrigger.unsubscribe();
-  }
-
   addCompany() {
     this.updateItem.emit({
       item: {
@@ -66,23 +60,18 @@ export class CompanyListComponent implements OnInit, OnDestroy {
     });
   }
 
-  updateCompany(item) {
+  updateCompany(item: any) {
     this.updateItem.emit({
       item: item
     })
   }
 
-  deleteCompany(id) {
+  deleteCompany(id: number) {
     this.companyService.deleteCompany(id).subscribe(r=>this.updateList.emit(), err=>console.log(err));
   }
-
+// exported
   reRenderTable() {
-    // this.dtTrigger.next();
     this.companyList.initTable();
-  }
-
-  test(a) {
-    console.log(a);
   }
 
 }

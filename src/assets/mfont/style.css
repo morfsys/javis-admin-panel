@@ -1,17 +1,17 @@
 @font-face {
-  font-family: 'Javis-Admin-icons';
-  src:  url('fonts/Javis-Admin-icons.eot?yfqg8q');
-  src:  url('fonts/Javis-Admin-icons.eot?yfqg8q#iefix') format('embedded-opentype'),
-    url('fonts/Javis-Admin-icons.ttf?yfqg8q') format('truetype'),
-    url('fonts/Javis-Admin-icons.woff?yfqg8q') format('woff'),
-    url('fonts/Javis-Admin-icons.svg?yfqg8q#Javis-Admin-icons') format('svg');
+  font-family: 'javis-admin-icons-c-o';
+  src:  url('fonts/javis-admin-icons-c-o.eot?bg7zdd');
+  src:  url('fonts/javis-admin-icons-c-o.eot?bg7zdd#iefix') format('embedded-opentype'),
+    url('fonts/javis-admin-icons-c-o.ttf?bg7zdd') format('truetype'),
+    url('fonts/javis-admin-icons-c-o.woff?bg7zdd') format('woff'),
+    url('fonts/javis-admin-icons-c-o.svg?bg7zdd#javis-admin-icons-c-o') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 .mfont {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'Javis-Admin-icons' !important;
+  font-family: 'javis-admin-icons-c-o' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -24,21 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.mf-company-alt:before {
-  content: "\e902";
-}
-.mf-dashboard:before {
+.mf-outlet:before {
   content: "\e900";
 }
-.mf-location:before {
-  content: "\e901";
-}
-.mf-misc:before {
-  content: "\e90a";
-}
 .mf-company:before {
-  content: "\e903";
-}
-.mf-outlet:before {
-  content: "\e904";
+  content: "\e901";
 }

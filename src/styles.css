@@ -2,11 +2,11 @@
 .cursor-pointer {
     cursor: pointer;
 }
-ng-selectize.ng-invalid .selectize-control div.selectize-input {
+/* ng-selectize.ng-invalid .selectize-control div.selectize-input {
     border-color: #dc3545 !important;
-}
+} */
 
-input, textarea {
+form.uppercase-form input, textarea {
     text-transform: uppercase;
 }
 ng-selectize.ng-invalid.is-invalid .selectize-control div.selectize-input {
@@ -40,3 +40,16 @@ ng-selectize.is-invalid ~ .invalid-feedback {
     color: #FA2F63 !important;
 }
 
+/* DATATABLES OVERRIDE */
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    width: 2.5em;
+    height: 2.5em;
+}
+
+
+/*  DEFAULTS */
+
+a, a:hover, a:visited, a:focus {
+    color: #922a8e;
+}

@@ -15,6 +15,7 @@ export class DataTableDirective implements OnInit {
   }
 
   initTable() {
+    console.log('init called');
     $(this.el.nativeElement).dataTable();
   }
 
