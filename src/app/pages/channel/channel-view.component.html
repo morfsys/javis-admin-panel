@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-heading border bottom">
+          <h4 class="card-title">{{item._id>0?'Edit':'Add New'}} Channel</h4>
+          <span *ngIf="cancelAllowed" class="float-right cursor-pointer" (click)="clickedCancel.emit()"><i class="ei-unchecked"></i></span>
+        </div>
+
+        <div class="card-block">
+          <div class="mt-4">
+            <div class="row">
+              <div class="col-md-8 mx-auto">
+                <form autocomplete="off" (submit)="addItem(channelForm)" #channelForm="ngForm" class="uppercase-form">
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label>Channel name</label>
+                        <input type="text" name="channelName" #channelName="ngModel" placeholder="Enter Channel name"
+                          class="form-control" [class.is-invalid]="(formSubmitted || channelName.touched) && !channelName.valid"
+                          [(ngModel)]="item.name" required pattern="[a-zA-Z\s]+">
+                        <div class="invalid-feedback">
+                          {{'Channel name is required.'}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col">
+                      <div class="form-group">
+                        <label>Channel Description</label>
+                        <input type="text" name="channelDescription" #channelDescription="ngModel" placeholder="Enter UQC description"
+                          class="form-control" [class.is-invalid]="(formSubmitted || channelDescription.touched) && !channelDescription.valid"
+                          [(ngModel)]="item.description" required>
+                        <div class="invalid-feedback">
+                          {{'Channel description is required.'}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="text-right mrg-top-5">
+                        <button type="submit" class="btn btn-primary m-0">Save</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

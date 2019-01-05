@@ -1,2 +1,2 @@
-<app-company-view *ngIf="viewItem || !(items == undefined || items.length > 0)" [view-item]="company" [cancel-allowed]="items.length>0" (postSubmit)="itemSubmitted()" (clickedCancel)="viewItem = false;"></app-company-view>
-<app-company-list [style.display]="!viewCompany && (companies == undefined || companies.length > 0)?'inherit':'none'" [items]="companies" (updateItem)="editCompany($event.item)" (updateList)="getCompanies()" #companyList></app-company-list>      
+<app-retailer-view *ngIf="viewItem || !(items == undefined || items.length > 0)" [view-item]="item" [cancel-allowed]="items.length>0" (postSubmit)="itemSubmitted()" (clickedCancel)="viewItem = false;"></app-retailer-view>
+<app-retailer-list [style.display]="!viewItem && (items == undefined || items.length > 0)?'inherit':'none'" [items]="items" (updateItem)="editItem($event.item)" (updateList)="getItems()" #masterList></app-retailer-list>      

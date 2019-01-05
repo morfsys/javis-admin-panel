@@ -1,0 +1,44 @@
+<div class="container-fluid">
+
+    <div class="row">
+      <div class="col">
+        <div class="page-title">
+          <h4 [style.display]="'inline-block'">State List</h4>
+          <button class="btn  btn-flat btn-sm float-right mr-0" (click)="addItem()">Add state</button>
+        </div>
+      </div>
+      <div class="w-100"></div>
+      <div class="col-12">
+  
+  
+        <div class="card">
+          <div class="card-block">
+  
+            <div class="table-overflow">
+              <table class="table" appDataTable #masterList="appDataTable">
+                <thead>
+                  <tr>
+                    <th>State</th>
+                    <th>State Code</th>
+                    <th>Country</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let it of items">
+                    <td>{{it.name}}</td>
+                    <td>{{it.code}}</td>
+                    <td>{{it.country}}</td>
+                    <td class="py-1">
+                      <app-action-dots class="text-center" [action-items]="listActionItems" [item]="it"></app-action-dots>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -14,7 +14,7 @@ import { AreaComponent } from './pages/area/area.component';
 import { StateComponent } from './pages/state/state.component';
 import { CityComponent } from './pages/city/city.component';
 import { BankComponent } from './pages/bank/bank.component';
-import { UnitQuantityCodeComponent } from './pages/unit-quantity-code/unit-quantity-code.component';
+import { UQCComponent } from './pages/unit-quantity-code/uqc.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const AppRoutes: Routes = [
@@ -69,7 +69,7 @@ export const AppRoutes: Routes = [
             },
             {
                 path: 'unit-quantity-code',
-                component: UnitQuantityCodeComponent
+                component: UQCComponent
             },
         ]
     }

@@ -15,7 +15,7 @@ export class RetailerComponent implements OnInit {
   item = {};
 
   constructor(
-    private moduleService: RetailerService
+    private mService: RetailerService
   ) { }
 
   ngOnInit() {
@@ -23,7 +23,7 @@ export class RetailerComponent implements OnInit {
   }
 
   getItems() {
-    this.moduleService.getItems().subscribe(items => {
+    this.mService.getItems().subscribe(items => {
       this.items = items;
       this.viewItem = false;
       setTimeout(()=>{

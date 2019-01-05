@@ -59,7 +59,13 @@ declare var $: any;
             </div>
             </div>
         </div>
-        <button type="submit" [style.display]="'none'" id="submit-button"></button>
+        <div class="row">
+            <div class="col">
+                <div class="text-right mrg-top-5">
+                    <button type="submit" class="btn btn-primary m-0" id="submit-button" [style.display]="showSubmit?'inline-block':'none'">Save</button>
+                </div>
+            </div>
+        </div>
     </form>
   `,
   styleUrls: ['./add-form.city.component.css']
@@ -67,6 +73,7 @@ declare var $: any;
 export class AddFormCityComponent implements OnInit {
 
     @Input('city') city;
+    @Input('show-submit') showSubmit: boolean = false;
     @Output() postSubmit = new EventEmitter();
     @ViewChild('cityform') cityForm;
 
@@ -89,7 +96,7 @@ export class AddFormCityComponent implements OnInit {
     };
     stateOptions = [];
     populateStateOptions() {
-        this.stateService.getStates().subscribe(
+        this.stateService.getItems().subscribe(
             states => this.stateOptions = states.map( s => s = { label: s.name, value: s.name, code: s.code } ),
             err => console.log(err)
         )
@@ -101,7 +108,7 @@ export class AddFormCityComponent implements OnInit {
         if(!form.valid) {
             return false;
         }
-        this.cityService.addCity(Object.assign({
+        this.cityService.addItem(Object.assign({
             name: '',
             code: '',
             population: 0,

@@ -6,7 +6,7 @@ import { of, Observable, Subject } from 'rxjs';
 })
 export class CityService {
 
-  cities: Array<any> = [
+  items: Array<any> = [
     {
       name: "MUMBAI",
       code: "MUM",
@@ -31,14 +31,14 @@ export class CityService {
   ]
   constructor() { }
 
-  getCities(): Observable<Array<any>> {
-    return of(this.cities.map((c, i)=>c = {...c, _id: i+1 }));
+  getItems(): Observable<Array<any>> {
+    return of(this.items.map((c, i)=>c = {...c, _id: i+1 }));
   }
 
-  addCity(city): Observable<any> {
+  addItem(city): Observable<any> {
     return new Observable(observer=>{
       try {
-        let id = this.cities.push(city);
+        let id = this.items.push(city);
         observer.next({...city, _id: id+1});
       } catch(err) {
         observer.error(err);
@@ -46,5 +46,16 @@ export class CityService {
     })
   }
 
+  
+  deleteItem(id) {
+    return new Observable(observer=>{
+      try{
+        this.items.splice(id-1, 1);
+        observer.next({success: true});
+      } catch(err) {
+        observer.error(err);
+      }
+    })
+  }
   issueSubmit = new Subject();
 }

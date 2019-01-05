@@ -64,7 +64,7 @@ export class CompanyViewComponent implements OnInit {
     }
     showCitySelect = true;
     populateCityOptions() {
-        this.cityService.getCities().subscribe(
+        this.cityService.getItems().subscribe(
             cities => {
                 this.cityOptions = cities.map(c => c = { label: c.name, value: c.name, code: c.code });
                 this.showCitySelect = false;

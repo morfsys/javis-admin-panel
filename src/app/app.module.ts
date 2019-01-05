@@ -1,3 +1,11 @@
+import { AddFormAreaComponent } from './pages/area/add-form.area.component';
+import { ChannelViewComponent } from './pages/channel/channel-view.component';
+import { CityListComponent } from './pages/city/city-list.component';
+import { CityViewComponent } from './pages/city/city-view.component';
+import { BankViewComponent } from './pages/bank/bank-view.component';
+import { BankListComponent } from './pages/bank/bank-list.component';
+import { AreaViewComponent } from './pages/area/area-view.component';
+import { AreaListComponent } from './pages/area/area-list.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -26,21 +34,30 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { CompanyComponent } from './pages/company/company.component';
 import { CompanyViewComponent } from './pages/company/company-view.component';
 import { CountryComponent } from './pages/country/country.component';
+import { CountryListComponent } from './pages/country/country-list.component';
+import { CountryViewComponent } from './pages/country/country-view.component';
 import { CompanyListComponent } from './pages/company/company-list.component';
 import { StateComponent } from './pages/state/state.component';
+import { StateListComponent } from './pages/state/state-list.component';
+import { StateViewComponent } from './pages/state/state-view.component';
 import { CityComponent } from './pages/city/city.component';
 import { AddFormCityComponent } from './pages/city/add-form.city.component';
 import { RetailerComponent } from './pages/retailer/retailer.component';
+import { RetailerViewComponent } from './pages/retailer/retailer-view.component';
+import { RetailerListComponent } from './pages/retailer/retailer-list.component';
 import { ChannelComponent } from './pages/channel/channel.component';
 import { AreaComponent } from './pages/area/area.component';
 import { BankComponent } from './pages/bank/bank.component';
-import { UnitQuantityCodeComponent } from './pages/unit-quantity-code/unit-quantity-code.component';
+import { UQCComponent } from './pages/unit-quantity-code/uqc.component';
+import { UQCListComponent } from './pages/unit-quantity-code/uqc-list.component';
+import { UQCViewComponent } from './pages/unit-quantity-code/uqc-view.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ForceUppercaseDirective } from './directives/force-uppercase.directive';
 import { DataTableDirective } from './directives/data-table.directive';
 import { Bs4PopoverDirective } from './directives/bs4-popover.directive';
 import { ActionDotsComponent } from './components/action-dots/action-dots.component';
 import { NgSelectizeDirective } from './directives/ng-selectize.directive';
+import { ChannelListComponent } from './pages/channel/channel-list.component';
 
 @NgModule({
     imports: [
@@ -62,22 +79,41 @@ import { NgSelectizeDirective } from './directives/ng-selectize.directive';
         SigninComponent,
         CompanyComponent,
         CountryComponent,
+        CountryListComponent,
+        CountryViewComponent,
         CompanyListComponent,
         CompanyViewComponent,
         StateComponent,
+        StateListComponent,
+        StateViewComponent,
         CityComponent,
+        CityViewComponent,
+        CityListComponent,
         AddFormCityComponent,
         RetailerComponent,
+        RetailerViewComponent,
+        RetailerListComponent,
         ChannelComponent,
+        ChannelViewComponent,
+        ChannelListComponent,
         AreaComponent,
+        AreaListComponent,
+        AreaViewComponent,
+        AddFormAreaComponent,
         BankComponent,
-        UnitQuantityCodeComponent,
+        BankListComponent,
+        BankViewComponent,
+        UQCComponent,
+        UQCViewComponent,
+        UQCListComponent,
         DashboardComponent,
         ForceUppercaseDirective,
         DataTableDirective,
         Bs4PopoverDirective,
         ActionDotsComponent,
-        NgSelectizeDirective
+        NgSelectizeDirective,
+        RetailerViewComponent,
+        RetailerListComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,3 +1,2 @@
-<p>
-  channel works!
-</p>
+<app-channel-view *ngIf="viewItem || !(items == undefined || items.length > 0)" [view-item]="item" [cancel-allowed]="items.length>0" (postSubmit)="itemSubmitted()" (clickedCancel)="viewItem = false;"></app-channel-view>
+<app-channel-list [style.display]="!viewItem && (items == undefined || items.length > 0)?'inherit':'none'" [items]="items" (updateItem)="editItem($event.item)" (updateList)="getItems()" #masterList></app-channel-list>      

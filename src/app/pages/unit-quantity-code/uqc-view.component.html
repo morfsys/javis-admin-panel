@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-heading border bottom">
+            <h4 class="card-title">{{item._id>0?'Edit':'Add New'}} Unit Quantity Code</h4>
+            <span *ngIf="cancelAllowed" class="float-right cursor-pointer" (click)="clickedCancel.emit()"><i class="ei-unchecked"></i></span>
+          </div>
+  
+          <div class="card-block">
+            <div class="mt-4">
+              <div class="row">
+                <div class="col-md-8 mx-auto">
+                  <form autocomplete="off" (submit)="addItem(uqcForm)" #uqcForm="ngForm" class="uppercase-form">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label>UQC Code</label>
+                          <input type="text" name="uqcCode" #uqcCode="ngModel" placeholder="Enter UQC name"
+                            class="form-control" [class.is-invalid]="(formSubmitted || uqcCode.touched) && !uqcCode.valid"
+                            [(ngModel)]="item.code" required pattern="[a-zA-Z\s]+">
+                          <div class="invalid-feedback">
+                            {{'UQC name is required.'}}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="w-100"></div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label>UQC Description</label>
+                          <input type="text" name="uqcDescription" #uqcDescription="ngModel" placeholder="Enter UQC description"
+                            class="form-control" [class.is-invalid]="(formSubmitted || uqcDescription.touched) && !uqcDescription.valid"
+                            [(ngModel)]="item.description" required>
+                          <div class="invalid-feedback">
+                            {{'UQC description is required.'}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="text-right mrg-top-5">
+                          <button type="submit" class="btn btn-primary m-0">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
