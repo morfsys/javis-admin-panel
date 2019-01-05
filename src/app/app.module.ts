@@ -58,6 +58,7 @@ import { Bs4PopoverDirective } from './directives/bs4-popover.directive';
 import { ActionDotsComponent } from './components/action-dots/action-dots.component';
 import { NgSelectizeDirective } from './directives/ng-selectize.directive';
 import { ChannelListComponent } from './pages/channel/channel-list.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
     imports: [
@@ -113,7 +114,8 @@ import { ChannelListComponent } from './pages/channel/channel-list.component';
         ActionDotsComponent,
         NgSelectizeDirective,
         RetailerViewComponent,
-        RetailerListComponent
+        RetailerListComponent,
+        ProfileComponent
     ],
     providers: [],
     bootstrap: [AppComponent]
