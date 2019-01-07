@@ -59,6 +59,8 @@ import { ActionDotsComponent } from './components/action-dots/action-dots.compon
 import { NgSelectizeDirective } from './directives/ng-selectize.directive';
 import { ChannelListComponent } from './pages/channel/channel-list.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { InputMaxLengthDirective } from './directives/input-max-length.directive';
+import { AllowedCharsDirective } from './directives/allowed-chars.directive';
 
 @NgModule({
     imports: [
@@ -115,7 +117,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
         NgSelectizeDirective,
         RetailerViewComponent,
         RetailerListComponent,
-        ProfileComponent
+        ProfileComponent,
+        InputMaxLengthDirective,
+        AllowedCharsDirective
     ],
     providers: [],
     bootstrap: [AppComponent]

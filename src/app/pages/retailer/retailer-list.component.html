@@ -18,15 +18,21 @@
               <table class="table" appDataTable #masterList="appDataTable">
                 <thead>
                   <tr>
-                    <th>Retailer name</th>
-                    <th>Company code</th>
+                    <th>Retailer</th>
+                    <th>Mobile</th>
+                    <th>Area</th>
+                    <th>City</th>
+                    <th>Channel</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let it of items">
-                    <td></td>
-                    <td></td>
+                    <td>{{it.name}}</td>
+                    <td>{{it.mobile}}</td>
+                    <td>{{it.area}}</td>
+                    <td>{{it.city}}</td>
+                    <td>{{it.channel}}</td>
                     <td class="py-1">
                       <app-action-dots class="text-center" [action-items]="listActionItems" [item]="it"></app-action-dots>
                     </td>

@@ -45,7 +45,7 @@
                             class="form-control" [class.is-invalid]="(formSubmitted || isdCode.touched) && !isdCode.valid"
                             [(ngModel)]="item.isd" required pattern="\+[0-9]{2,4}">
                           <div class="invalid-feedback">
-                            {{isdCode.missing?'Country name is required.':'Invalid ISD code'}}
+                            {{isdCode.missing?'Country name is required.':'Invalid ISD code(+DD)'}}
                           </div>
                         </div>
                       </div>

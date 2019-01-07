@@ -31,9 +31,9 @@
                       <div class="form-group">
                         <label>Company Code</label>
                         <input type="text" name="companyCode" #companyCode="ngModel" placeholder="Enter company code" class="form-control" [class.is-invalid]="(companySubmitted || companyCode.touched) && !companyCode.valid"
-                          [(ngModel)]="item.code" required pattern=".{1,4}">
+                          [(ngModel)]="item.code" required pattern=".{1,4}" maxlength="3" allowedChars="[a-zA-Z]">
                           <div class="invalid-feedback">
-                            {{companyCode.missing?'Company code is required.':'Max 4 characters allowed'}}
+                            {{companyCode.missing?'Company code is required.':'Max 3 characters allowed'}}
                             </div>
                       </div>
                     </div>
@@ -43,7 +43,7 @@
                       <div class="form-group">
                         <label>GSTIN</label>
                         <input type="text" name="gstin" #gstin="ngModel" placeholder="Enter company GSTIN" class="form-control" [class.is-invalid]="(companySubmitted || gstin.touched) && !gstin.valid"
-                          [(ngModel)]="item.gstin" required pattern="[\w\d]{15}">
+                          [(ngModel)]="item.gstin" required pattern="[\w\d]{15}" maxlength="15"  allowedChars="[a-zA-Z0-9]">
                           <div class="invalid-feedback">
                             {{gstin.missing?'GSTIN is required.':'GSTIN needs to be exactly 15 alphanumeric characters'}}
                             </div>
@@ -53,8 +53,8 @@
                     <div class="col">
                       <div class="form-group">
                         <label>Company PAN</label>
-                        <input type="text" name="pan" #pan="ngModel" placeholder="Enter company PAN" [class.is-invalid]="(companySubmitted || pan.touched) && !pan.valid" class="form-control" [(ngModel)]="item.pan" required pattern="[\w\d]{10}">
-                        <div class="invalid-feedback">
+                        <input type="text" name="pan" #pan="ngModel" placeholder="Enter company PAN" [class.is-invalid]="(companySubmitted || pan.touched) && !pan.valid" class="form-control" [(ngModel)]="item.pan" required pattern="[\w\d]{10}" maxlength="10">
+                        <div class="invalid-feedback"  allowedChars="[a-zA-Z0-9]">
                           {{pan.missing?'PAN is required.':'PAN needs to be exactly 10 alphanumeric characters'}}
                           </div>
                       </div>
@@ -82,7 +82,7 @@
                     <div class="col">
                       <div class="form-group">
                         <label>Pincode</label>
-                        <input type="text" name="pincode" #pincode="ngModel" placeholder="Pin Code" class="form-control" [class.is-invalid]="(companySubmitted || pincode.touched) && !pincode.valid" [(ngModel)]="item.pincode"  required  pattern="[\d]{6}"/>
+                        <input type="number" name="pincode" #pincode="ngModel" placeholder="Pin Code" class="form-control" [class.is-invalid]="(companySubmitted || pincode.touched) && !pincode.valid" [(ngModel)]="item.pincode"  required  pattern="[\d]{6}" [inputMaxLength]="6"/>
                         <div class="invalid-feedback">
                           {{pincode.missing?'Pincode is required.':'Pincode needs to be exactly 6 numeric characters'}}
                           </div>

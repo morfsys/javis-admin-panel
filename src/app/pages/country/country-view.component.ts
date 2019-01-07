@@ -44,7 +44,14 @@ export class CountryViewComponent implements OnInit {
             currency: this.item.currency.toUpperCase(),
             currencyCode: this.item.currencyCode.toUpperCase()
         })).subscribe(company => {
-
+            this.item = {
+                _id: 0,
+                name: '',
+                code: "",
+                isd: "",
+                currency: "",
+                currencyCode: ""
+            };
             this.postSubmit.emit();
         })
     }

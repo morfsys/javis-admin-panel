@@ -6,7 +6,7 @@ declare var $: any;
 @Component({
     selector: 'city-add-form',
     template: `
-    <form autocomplete="off" (submit)="addCity(cityform.form)" #cityform="ngForm">
+    <form autocomplete="off" (submit)="addCity(cityform.form)" #cityform="ngForm" class="uppercase-form">
         <div class="row">
             <div class="col">
             <div class="form-group">
@@ -21,9 +21,9 @@ declare var $: any;
             <div class="col">
             <div class="form-group">
                 <label>City Code</label>
-                <input placeholder="City code"  #codeField="ngModel" type="text" class="form-control" [class.is-invalid]="(formSubmitted || codeField.touched) && !codeField.valid" name="cityName" name="cityCode" [(ngModel)]="city.code" required>
+                <input placeholder="City code"  #codeField="ngModel" type="text" class="form-control" [class.is-invalid]="(formSubmitted || codeField.touched) && !codeField.valid" name="cityName" name="cityCode" [(ngModel)]="city.code" required pattern="[a-zA-Z]{3}" [inputMaxLength]="3" allowedChars="[a-zA-Z]">
                 <div class="invalid-feedback">
-                    Code is required.
+                    3 letter alpha code is required
                 </div>
             </div>
             </div>
@@ -42,7 +42,7 @@ declare var $: any;
             <div class="col">
             <div class="form-group">
                 <label>STD code</label>
-                <input placeholder="STD Code" type="number"  #stdCode="ngModel" class="form-control" [class.is-invalid]="(formSubmitted || stdCode.touched) && !stdCode.valid" name="cityName" name="stdCode" [(ngModel)]="city.stdCode" required pattern="['\\d']{4}">
+                <input placeholder="STD Code" type="number"  #stdCode="ngModel" class="form-control" [class.is-invalid]="(formSubmitted || stdCode.touched) && !stdCode.valid" name="cityName" name="stdCode" [(ngModel)]="city.stdCode" required pattern="['\\d']{4}" [inputMaxLength]="4">
                 <div class="invalid-feedback">
                     STD code is required.
                 </div>

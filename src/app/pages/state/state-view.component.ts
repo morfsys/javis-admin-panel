@@ -43,7 +43,12 @@ export class StateViewComponent implements OnInit {
             code: this.item.code.toUpperCase(),
             country: this.item.country.toUpperCase()
         })).subscribe(company => {
-
+            this.item = {
+                _id: 0,
+                name: '',
+                code: "",
+                country: ""
+            };
             this.postSubmit.emit();
         })
     }

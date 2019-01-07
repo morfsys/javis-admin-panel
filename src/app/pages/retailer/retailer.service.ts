@@ -6,21 +6,21 @@ import { of, Observable } from 'rxjs';
 })
 export class RetailerService {
   items: Array<any> = [
-  //   {
-  //   name: "Retailer name",
-  //   mobile: "9876543210",
-  //   altMobile: "9876543210",
-  //   landline: "2316499",
-  //   address: "Address here",
-  //   pincode: "400001",
-  //   area: "adbad",
-  //   city: "Mumbai",
-  //   channel: "",
-  //   FSSAILicense: "",
-  //   latitude: "",
-  //   longitude: "",
-  //   endDate: ""
-  // }
+    {
+    name: "Retailer name",
+    mobile: "9876543210",
+    altMobile: "9876543210",
+    landline: "2316499",
+    address: "Address here",
+    pincode: "400001",
+    area: "adbad",
+    city: "Mumbai",
+    channel: "",
+    FSSAILicense: "",
+    latitude: "",
+    longitude: "",
+    endDate: ""
+  }
 ];
   
 
