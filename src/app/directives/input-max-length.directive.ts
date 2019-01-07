@@ -1,18 +1,21 @@
-import { Directive, ElementRef, OnInit, Input } from '@angular/core';
+import { Directive, ElementRef, OnInit, Input } from "@angular/core";
 declare var $: any;
 @Directive({
-  selector: '[inputMaxLength]'
+  selector: "[inputMaxLength]"
 })
 export class InputMaxLengthDirective implements OnInit {
-  @Input('inputMaxLength') inputMaxLength: number = 10;
-  constructor(
-    private elem: ElementRef
-  ) { }
+  @Input("inputMaxLength") inputMaxLength: number = 10;
+  constructor(private elem: ElementRef) {}
 
   ngOnInit() {
     let el = this.elem.nativeElement;
-    $(el).on('keydown', event=>{
-      if(el.value.length==this.inputMaxLength && event.keyCode!=8) return false;
+    $(el).on("keydown", event => {
+      if (
+        el.value.length == this.inputMaxLength &&
+        event.keyCode != 8 &&
+        event.keyCode != 9
+      )
+        return false;
       return true;
     });
   }

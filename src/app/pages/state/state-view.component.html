@@ -3,24 +3,51 @@
     <div class="col-12">
       <div class="card">
         <div class="card-heading border bottom">
-          <h4 class="card-title">{{item._id>0?'Edit':'Add New'}} State</h4>
-          <span *ngIf="cancelAllowed" class="float-right cursor-pointer" (click)="clickedCancel.emit()"><i class="ei-unchecked"></i></span>
+          <h4 class="card-title">
+            {{ item._id > 0 ? "Edit" : "Add New" }} State
+          </h4>
+          <span
+            *ngIf="cancelAllowed"
+            class="float-right cursor-pointer"
+            (click)="clickedCancel.emit()"
+            ><i class="ei-unchecked"></i
+          ></span>
         </div>
 
         <div class="card-block">
           <div class="mt-4">
             <div class="row">
               <div class="col-md-8 mx-auto">
-                <form autocomplete="off" (submit)="addItem(stateForm)" #stateForm="ngForm" class="uppercase-form">
+                <form
+                  autocomplete="off"
+                  (submit)="addItem(stateForm)"
+                  #stateForm="ngForm"
+                  class="uppercase-form"
+                >
                   <div class="row">
                     <div class="col">
                       <div class="form-group">
                         <label>State Name</label>
-                        <input type="text" name="stateName" #stateName="ngModel" placeholder="Enter State name" class="form-control"
-                          [class.is-invalid]="(formSubmitted || stateName.touched) && !stateName.valid" [(ngModel)]="item.name"
-                          required pattern=".{4,}">
+                        <input
+                          type="text"
+                          name="stateName"
+                          #stateName="ngModel"
+                          placeholder="Enter State name"
+                          class="form-control"
+                          [class.is-invalid]="
+                            (formSubmitted || stateName.touched) &&
+                            !stateName.valid
+                          "
+                          [(ngModel)]="item.name"
+                          required
+                          pattern=".{4,}"
+                        />
                         <div class="invalid-feedback">
-                          {{stateName.missing?'Name is required.':'Name needs to be atleast 4 characters'}}
+                          {{
+                            stateName.missing
+                              ? "Name is required."
+                              : "Name needs to be atleast 4 characters"
+                          }}
                         </div>
                       </div>
                     </div>
@@ -28,11 +55,28 @@
                     <div class="col">
                       <div class="form-group">
                         <label>State Code</label>
-                        <input type="text" name="stateCode" #stateCode="ngModel" placeholder="Enter code"
-                          class="form-control" [class.is-invalid]="(formSubmitted || stateCode.touched) && !stateCode.valid"
-                          [(ngModel)]="item.code" required pattern="[a-zA-Z]{3}">
+                        <input
+                          type="text"
+                          name="stateCode"
+                          #stateCode="ngModel"
+                          placeholder="Enter code"
+                          class="form-control"
+                          [class.is-invalid]="
+                            (formSubmitted || stateCode.touched) &&
+                            !stateCode.valid
+                          "
+                          [(ngModel)]="item.code"
+                          required
+                          pattern="[a-zA-Z]{3}"
+                          [inputMaxLength]="3"
+                          allowedChars="[a-zA-Z]"
+                        />
                         <div class="invalid-feedback">
-                          {{stateCode.missing?'State code is required.':'3 letter aplpha code required'}}
+                          {{
+                            stateCode.missing
+                              ? "State code is required."
+                              : "3 letter aplpha code required"
+                          }}
                         </div>
                       </div>
                     </div>
@@ -41,20 +85,29 @@
                     <div class="col">
                       <div class="form-group">
                         <label>City</label>
-                        <ng-selectize *ngIf="showCountrySelect" #country="ngSelectize" [class.is-invalid]="formSubmitted && !country.hasNgValid"
-                          placeholder="SELECT COUNTRY" name="country" [config]="selectizeConfig" [options]="countryOptions"
-                          [(ngModel)]="item.country" required></ng-selectize>
-                        <div class="invalid-feedback">
-                          Country is required.
-                        </div>
+                        <ng-selectize
+                          *ngIf="showCountrySelect"
+                          #country="ngSelectize"
+                          [class.is-invalid]="
+                            formSubmitted && !country.hasNgValid
+                          "
+                          placeholder="SELECT COUNTRY"
+                          name="country"
+                          [config]="selectizeConfig"
+                          [options]="countryOptions"
+                          [(ngModel)]="item.country"
+                          required
+                        ></ng-selectize>
+                        <div class="invalid-feedback">Country is required.</div>
                       </div>
                     </div>
-
                   </div>
                   <div class="row">
                     <div class="col">
                       <div class="text-right mrg-top-5">
-                        <button type="submit" class="btn btn-primary m-0">Save</button>
+                        <button type="submit" class="btn btn-primary m-0">
+                          Save
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -63,7 +116,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>

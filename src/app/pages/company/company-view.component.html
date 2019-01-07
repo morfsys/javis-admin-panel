@@ -7,34 +7,80 @@
     <div class="col-12">
       <div class="card">
         <div class="card-heading border bottom">
-          <h4 class="card-title">{{item._id>0?'Edit':'Add New'}} Company</h4>
-          <span *ngIf="cancelAllowed" class="float-right cursor-pointer" (click)="clickedCancel.emit()"><i class="ei-unchecked"></i></span>
+          <h4 class="card-title">
+            {{ item._id > 0 ? "Edit" : "Add New" }} Company
+          </h4>
+          <span
+            *ngIf="cancelAllowed"
+            class="float-right cursor-pointer"
+            (click)="clickedCancel.emit()"
+            ><i class="ei-unchecked"></i
+          ></span>
         </div>
         <div class="card-block">
           <div class="mt-4">
             <div class="row">
               <div class="col-md-8 mx-auto">
-                <form autocomplete="off" (submit)="addCompany(companyForm)" #companyForm="ngForm" class="uppercase-form">
+                <form
+                  autocomplete="off"
+                  (submit)="addCompany(companyForm)"
+                  #companyForm="ngForm"
+                  class="uppercase-form"
+                >
                   <div class="row">
                     <div class="col col-md-8">
                       <div class="form-group">
                         <label>Company Name</label>
-                        <input type="text" name="companyName" #companyName="ngModel" placeholder="Enter company name" class="form-control" [class.is-invalid]="(companySubmitted || companyName.touched) && !companyName.valid"
-                          [(ngModel)]="item.name" required pattern=".{4,}">
-                          <div class="invalid-feedback">
-                              {{companyName.missing?'Company name is required.':'Name needs to be   atleast 4 characters'}}
-                            </div>
+                        <input
+                          type="text"
+                          name="companyName"
+                          #companyName="ngModel"
+                          placeholder="Enter company name"
+                          class="form-control"
+                          [class.is-invalid]="
+                            (companySubmitted || companyName.touched) &&
+                            !companyName.valid
+                          "
+                          [(ngModel)]="item.name"
+                          required
+                          pattern=".{4,}"
+                        />
+                        <div class="invalid-feedback">
+                          {{
+                            companyName.missing
+                              ? "Company name is required."
+                              : "Name needs to be   atleast 4 characters"
+                          }}
+                        </div>
                       </div>
                     </div>
                     <div class="w-100 d-md-none"></div>
                     <div class="col">
                       <div class="form-group">
                         <label>Company Code</label>
-                        <input type="text" name="companyCode" #companyCode="ngModel" placeholder="Enter company code" class="form-control" [class.is-invalid]="(companySubmitted || companyCode.touched) && !companyCode.valid"
-                          [(ngModel)]="item.code" required pattern=".{1,4}" maxlength="3" allowedChars="[a-zA-Z]">
-                          <div class="invalid-feedback">
-                            {{companyCode.missing?'Company code is required.':'Max 3 characters allowed'}}
-                            </div>
+                        <input
+                          type="text"
+                          name="companyCode"
+                          #companyCode="ngModel"
+                          placeholder="Enter company code"
+                          class="form-control"
+                          [class.is-invalid]="
+                            (companySubmitted || companyCode.touched) &&
+                            !companyCode.valid
+                          "
+                          [(ngModel)]="item.code"
+                          required
+                          pattern=".{1,4}"
+                          maxlength="3"
+                          allowedChars="[a-zA-Z]"
+                        />
+                        <div class="invalid-feedback">
+                          {{
+                            companyCode.missing
+                              ? "Company code is required."
+                              : "Max 3 characters allowed"
+                          }}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -42,21 +88,56 @@
                     <div class="col">
                       <div class="form-group">
                         <label>GSTIN</label>
-                        <input type="text" name="gstin" #gstin="ngModel" placeholder="Enter company GSTIN" class="form-control" [class.is-invalid]="(companySubmitted || gstin.touched) && !gstin.valid"
-                          [(ngModel)]="item.gstin" required pattern="[\w\d]{15}" maxlength="15"  allowedChars="[a-zA-Z0-9]">
-                          <div class="invalid-feedback">
-                            {{gstin.missing?'GSTIN is required.':'GSTIN needs to be exactly 15 alphanumeric characters'}}
-                            </div>
+                        <input
+                          type="text"
+                          name="gstin"
+                          #gstin="ngModel"
+                          placeholder="Enter company GSTIN"
+                          class="form-control"
+                          [class.is-invalid]="
+                            (companySubmitted || gstin.touched) && !gstin.valid
+                          "
+                          [(ngModel)]="item.gstin"
+                          required
+                          pattern="[\w\d]{15}"
+                          maxlength="15"
+                          allowedChars="[a-zA-Z0-9]"
+                        />
+                        <div class="invalid-feedback">
+                          {{
+                            gstin.missing
+                              ? "GSTIN is required."
+                              : "GSTIN needs to be exactly 15 alphanumeric characters"
+                          }}
+                        </div>
                       </div>
                     </div>
                     <div class="w-100 d-md-none"></div>
                     <div class="col">
                       <div class="form-group">
                         <label>Company PAN</label>
-                        <input type="text" name="pan" #pan="ngModel" placeholder="Enter company PAN" [class.is-invalid]="(companySubmitted || pan.touched) && !pan.valid" class="form-control" [(ngModel)]="item.pan" required pattern="[\w\d]{10}" maxlength="10">
-                        <div class="invalid-feedback"  allowedChars="[a-zA-Z0-9]">
-                          {{pan.missing?'PAN is required.':'PAN needs to be exactly 10 alphanumeric characters'}}
-                          </div>
+                        <input
+                          type="text"
+                          name="pan"
+                          #pan="ngModel"
+                          placeholder="Enter company PAN"
+                          [class.is-invalid]="
+                            (companySubmitted || pan.touched) && !pan.valid
+                          "
+                          class="form-control"
+                          [(ngModel)]="item.pan"
+                          required
+                          pattern="[\w\d]{10}"
+                          maxlength="10"
+                          allowedChars="[a-zA-Z0-9]"
+                        />
+                        <div class="invalid-feedback">
+                          {{
+                            pan.missing
+                              ? "PAN is required."
+                              : "PAN needs to be exactly 10 alphanumeric characters"
+                          }}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -64,17 +145,31 @@
                     <div class="col">
                       <div class="form-group">
                         <label>Address 1</label>
-                        <input name="address1" #address="ngModel" placeholder="Address Line 1" class="form-control" [(ngModel)]="item.address_1" [class.is-invalid]="(companySubmitted || address.touched) && !address.valid" required/>
-                        <div class="invalid-feedback">
-                            Address is required.
-                          </div>
+                        <input
+                          name="address1"
+                          #address="ngModel"
+                          placeholder="Address Line 1"
+                          class="form-control"
+                          [(ngModel)]="item.address_1"
+                          [class.is-invalid]="
+                            (companySubmitted || address.touched) &&
+                            !address.valid
+                          "
+                          required
+                        />
+                        <div class="invalid-feedback">Address is required.</div>
                       </div>
                     </div>
                     <div class="w-100 d-md-none"></div>
                     <div class="col">
                       <div class="form-group">
                         <label>Address 2</label>
-                        <input name="address2" placeholder="Address Line 2 (Optional)" class="form-control" [(ngModel)]="item.address_2"  />
+                        <input
+                          name="address2"
+                          placeholder="Address Line 2 (Optional)"
+                          class="form-control"
+                          [(ngModel)]="item.address_2"
+                        />
                       </div>
                     </div>
                   </div>
@@ -82,22 +177,53 @@
                     <div class="col">
                       <div class="form-group">
                         <label>Pincode</label>
-                        <input type="number" name="pincode" #pincode="ngModel" placeholder="Pin Code" class="form-control" [class.is-invalid]="(companySubmitted || pincode.touched) && !pincode.valid" [(ngModel)]="item.pincode"  required  pattern="[\d]{6}" [inputMaxLength]="6"/>
+                        <input
+                          type="number"
+                          name="pincode"
+                          #pincode="ngModel"
+                          placeholder="Pin Code"
+                          class="form-control"
+                          [class.is-invalid]="
+                            (companySubmitted || pincode.touched) &&
+                            !pincode.valid
+                          "
+                          [(ngModel)]="item.pincode"
+                          required
+                          pattern="[\d]{6}"
+                          [inputMaxLength]="6"
+                          allowedChars="[0-9]"
+                        />
                         <div class="invalid-feedback">
-                          {{pincode.missing?'Pincode is required.':'Pincode needs to be exactly 6 numeric characters'}}
-                          </div>
+                          {{
+                            pincode.missing
+                              ? "Pincode is required."
+                              : "Pincode needs to be exactly 6 numeric characters"
+                          }}
+                        </div>
                       </div>
                     </div>
                     <div class="w-100 d-md-none"></div>
                     <div class="col">
                       <div class="form-group">
                         <label>City</label>
-                        <ng-selectize *ngIf="showCitySelect" #city="ngSelectize" [class.is-invalid]="companySubmitted && !city.hasNgValid" placeholder="SELECT CITY" name="city" [config]="selectizeConfig" [options]="cityOptions" [(ngModel)]="item.city" required></ng-selectize>
-                        <div class="invalid-feedback">
-                            City is required.
-                          </div>
+                        <ng-selectize
+                          *ngIf="showCitySelect"
+                          #city="ngSelectize"
+                          [class.is-invalid]="
+                            companySubmitted && !city.hasNgValid
+                          "
+                          placeholder="SELECT CITY"
+                          name="city"
+                          [config]="selectizeConfig"
+                          [options]="cityOptions"
+                          [(ngModel)]="item.city"
+                          required
+                        ></ng-selectize>
+                        <div class="invalid-feedback">City is required.</div>
                         <div class="w-100 text-right">
-                          <small class="cursor-pointer" (click)="addNewCity()">+ Add new city</small>
+                          <small class="cursor-pointer" (click)="addNewCity()"
+                            >+ Add new city</small
+                          >
                         </div>
                       </div>
                     </div>
@@ -106,7 +232,9 @@
                   <div class="row">
                     <div class="col">
                       <div class="text-right mrg-top-5">
-                        <button type="submit" class="btn btn-primary m-0">Save</button>
+                        <button type="submit" class="btn btn-primary m-0">
+                          Save
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -115,28 +243,38 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </div>
-
 
 <div class="modal" tabindex="-1" role="dialog" id="add-city-modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add City</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <city-add-form [city]="city" (postSubmit)="populateCityOptions()"></city-add-form>
+        <city-add-form
+          [city]="city"
+          (postSubmit)="populateCityOptions()"
+        ></city-add-form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="saveCity()">Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" (click)="saveCity()">
+          Save
+        </button>
       </div>
     </div>
   </div>

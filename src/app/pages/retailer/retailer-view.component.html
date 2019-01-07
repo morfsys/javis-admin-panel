@@ -6,26 +6,43 @@
           <h4 class="card-title">
             {{ item._id > 0 ? "Edit" : "Add New" }} Retailer
           </h4>
-          <span *ngIf="cancelAllowed" class="float-right cursor-pointer" (click)="clickedCancel.emit()"><i class="ei-unchecked"></i></span>
+          <span
+            *ngIf="cancelAllowed"
+            class="float-right cursor-pointer"
+            (click)="clickedCancel.emit()"
+            ><i class="ei-unchecked"></i
+          ></span>
         </div>
 
         <div class="card-block">
           <div class="mt-4">
             <div class="row">
               <div class="col-md-8 mx-auto">
-                <form autocomplete="off" (submit)="addItem(retailerForm)" #retailerForm="ngForm" class="uppercase-form">
+                <form
+                  autocomplete="off"
+                  (submit)="addItem(retailerForm)"
+                  #retailerForm="ngForm"
+                  class="uppercase-form"
+                >
                   <div class="row">
                     <div class="col">
                       <div class="form-group">
                         <label>Retailer Name</label>
-                        <input type="text" name="retailerName" #retailerName="ngModel" placeholder="Enter Retailer name"
-                          class="form-control" [class.is-invalid]="
+                        <input
+                          type="text"
+                          name="retailerName"
+                          #retailerName="ngModel"
+                          placeholder="Enter Retailer name"
+                          class="form-control"
+                          [class.is-invalid]="
                             (formSubmitted || retailerName.touched) &&
                             !retailerName.valid
                           "
-                          [(ngModel)]="item.name" required />
+                          [(ngModel)]="item.name"
+                          required
+                        />
                         <div class="invalid-feedback">
-                          {{ "Retailer name is required."}}
+                          {{ "Retailer name is required." }}
                         </div>
                       </div>
                     </div>
@@ -33,16 +50,25 @@
                     <div class="col">
                       <div class="form-group">
                         <label>Mobile number</label>
-                        <input type="number" name="mobile" #mobile="ngModel" placeholder="Enter Mobile" class="form-control"
+                        <input
+                          type="number"
+                          name="mobile"
+                          #mobile="ngModel"
+                          placeholder="Enter Mobile"
+                          class="form-control"
                           [class.is-invalid]="
                             (formSubmitted || mobile.touched) && !mobile.valid
                           "
-                          [(ngModel)]="item.mobile" required pattern="[56789][0-9]{9}" />
+                          [(ngModel)]="item.mobile"
+                          required
+                          pattern="[56789][0-9]{9}"
+                          [inputMaxLength]="10"
+                        />
                         <div class="invalid-feedback">
                           {{
-                          mobile.missing
-                          ? "Mobile is required."
-                          : "10 digits allowed"
+                            mobile.missing
+                              ? "Mobile is required."
+                              : "10 digits allowed"
                           }}
                         </div>
                       </div>
@@ -50,35 +76,26 @@
                     <div class="col">
                       <div class="form-group">
                         <label>Alternate Mobile number</label>
-                        <input type="number" name="altMobile" #altMobile="ngModel" placeholder="Enter alternate mobile"
-                          class="form-control" [class.is-invalid]="
+                        <input
+                          type="number"
+                          name="altMobile"
+                          #altMobile="ngModel"
+                          placeholder="Enter alternate mobile"
+                          class="form-control"
+                          [class.is-invalid]="
                             (formSubmitted || altMobile.touched) &&
                             !altMobile.valid
                           "
-                          [(ngModel)]="item.altMobile" required pattern="[56789][0-9]{9}" />
+                          [(ngModel)]="item.altMobile"
+                          required
+                          pattern="[56789][0-9]{9}"
+                          [inputMaxLength]="10"
+                        />
                         <div class="invalid-feedback">
                           {{
-                          altMobile.missing
-                          ? "Mobile is required."
-                          : "Minimum 6 digits allowed"
-                          }}
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="form-group">
-                        <label>Landline</label>
-                        <input type="number" name="landline" #landline="ngModel" placeholder="Enter landline" class="form-control"
-                          [class.is-invalid]="
-                            (formSubmitted || landline.touched) &&
-                            !landline.valid
-                          "
-                          [(ngModel)]="item.landline" required pattern=".{6,}" />
-                        <div class="invalid-feedback">
-                          {{
-                          landline.missing
-                          ? "Landline is required."
-                          : "Minimum 6 digits allowed"
+                            altMobile.missing
+                              ? "Mobile is required."
+                              : "Minimum 6 digits allowed"
                           }}
                         </div>
                       </div>
@@ -86,12 +103,84 @@
                     <div class="w-100"></div>
                     <div class="col">
                       <div class="form-group">
+                        <label>Landline</label>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <input
+                              type="number"
+                              name="isd"
+                              #isd="ngModel"
+                              placeholder="ISD"
+                              class="form-control"
+                              [class.is-invalid]="
+                                (formSubmitted || isd.touched) && !isd.valid
+                              "
+                              [(ngModel)]="item.landline.isd"
+                              required
+                              pattern=".{3}"
+                              [inputMaxLength]="3"
+                            />
+                            <div class="invalid-feedback">
+                              {{ "ISD is invalid" }}
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <input
+                              type="number"
+                              name="std"
+                              #std="ngModel"
+                              placeholder="STD"
+                              class="form-control"
+                              [class.is-invalid]="
+                                (formSubmitted || std.touched) && !std.valid
+                              "
+                              [(ngModel)]="item.landline.std"
+                              required
+                              pattern=".{4}"
+                              [inputMaxLength]="4"
+                            />
+                            <div class="invalid-feedback">
+                              {{ "STD is invalid" }}
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <input
+                              type="number"
+                              name="landlineNumber"
+                              #landlineNumber="ngModel"
+                              placeholder="NUMBER"
+                              class="form-control"
+                              [class.is-invalid]="
+                                (formSubmitted || landlineNumber.touched) &&
+                                !landlineNumber.valid
+                              "
+                              [(ngModel)]="item.landline.number"
+                              required
+                              pattern=".{6}"
+                              [inputMaxLength]="6"
+                            />
+                            <div class="invalid-feedback">
+                              {{ "Number is invalid" }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col">
+                      <div class="form-group">
                         <label>Address</label>
-                        <input name="address" #address="ngModel" placeholder="Enter landline" class="form-control"
+                        <input
+                          name="address"
+                          #address="ngModel"
+                          placeholder="Enter landline"
+                          class="form-control"
                           [class.is-invalid]="
                             (formSubmitted || address.touched) && !address.valid
                           "
-                          [(ngModel)]="item.address" required />
+                          [(ngModel)]="item.address"
+                          required
+                        />
                         <div class="invalid-feedback">
                           {{ "Address is required." }}
                         </div>
@@ -101,11 +190,20 @@
                     <div class="col">
                       <div class="form-group">
                         <label>Pin Code</label>
-                        <input type="number" name="pinCode" #pinCode="ngModel" placeholder="Enter pin code" class="form-control"
+                        <input
+                          type="number"
+                          name="pinCode"
+                          #pinCode="ngModel"
+                          placeholder="Enter pin code"
+                          class="form-control"
                           [class.is-invalid]="
                             (formSubmitted || pinCode.touched) && !pinCode.valid
                           "
-                          [(ngModel)]="item.pincode" required pattern=".{6}" />
+                          [(ngModel)]="item.pincode"
+                          required
+                          pattern=".{6}"
+                          [inputMaxLength]="6"
+                        />
                         <div class="invalid-feedback">
                           {{ "Invalid pincode" }}
                         </div>
@@ -114,10 +212,24 @@
                     <div class="col">
                       <div class="form-group">
                         <label>City</label>
-                        <ng-selectize *ngIf="showCitySelect" #city="ngSelectize" [class.is-invalid]="formSubmitted && !city.hasNgValid"
-                          placeholder="SELECT CITY" name="city" [config]="selectizeConfig" [options]="cityOptions"
-                          [(ngModel)]="item.city" required (ngModelChange)="citySelectChanged()"></ng-selectize>
+                        <ng-selectize
+                          *ngIf="showCitySelect"
+                          #city="ngSelectize"
+                          [class.is-invalid]="formSubmitted && !city.hasNgValid"
+                          placeholder="SELECT CITY"
+                          name="city"
+                          [config]="selectizeConfig"
+                          [options]="cityOptions"
+                          [(ngModel)]="item.city"
+                          required
+                          (ngModelChange)="citySelectChanged()"
+                        ></ng-selectize>
                         <div class="invalid-feedback">City is required.</div>
+                        <div class="w-100 text-right">
+                          <small class="cursor-pointer" (click)="addNewCity()"
+                            >+ Add new city</small
+                          >
+                        </div>
                         <!-- <div class="w-100 text-right">
                           <small class="cursor-pointer" (click)="addNewCity()">+ Add new city</small>
                         </div> -->
@@ -126,10 +238,23 @@
                     <div class="col">
                       <div class="form-group">
                         <label>Area</label>
-                        <ng-selectize *ngIf="showCitySelect" #area="ngSelectize" [class.is-invalid]="formSubmitted && !area.hasNgValid"
-                          placeholder="SELECT AREA" name="area" [config]="selectizeConfig" [options]="areaOptions"
-                          [(ngModel)]="item.area" required></ng-selectize>
+                        <ng-selectize
+                          *ngIf="showCitySelect"
+                          #area="ngSelectize"
+                          [class.is-invalid]="formSubmitted && !area.hasNgValid"
+                          placeholder="SELECT AREA"
+                          name="area"
+                          [config]="selectizeConfig"
+                          [options]="areaOptions"
+                          [(ngModel)]="item.area"
+                          required
+                        ></ng-selectize>
                         <div class="invalid-feedback">Area is required.</div>
+                        <div class="w-100 text-right">
+                          <small class="cursor-pointer" (click)="addNewArea()"
+                            >+ Add new area</small
+                          >
+                        </div>
                         <!-- <div class="w-100 text-right">
                           <small class="cursor-pointer" (click)="addNewArea()">+ Add new area</small>
                         </div> -->
@@ -139,12 +264,18 @@
                     <div class="col">
                       <div class="form-group">
                         <label>FSSAILicense</label>
-                        <input name="FSSAILicense" #FSSAILicense="ngModel" placeholder="Enter FSSAI License" class="form-control"
+                        <input
+                          name="FSSAILicense"
+                          #FSSAILicense="ngModel"
+                          placeholder="Enter FSSAI License"
+                          class="form-control"
                           [class.is-invalid]="
                             (formSubmitted || FSSAILicense.touched) &&
                             !FSSAILicense.valid
                           "
-                          [(ngModel)]="item.FSSAILicense" required />
+                          [(ngModel)]="item.FSSAILicense"
+                          required
+                        />
                         <div class="invalid-feedback">
                           {{ "FSSAI License is required." }}
                         </div>
@@ -153,12 +284,19 @@
                     <div class="col">
                       <div class="form-group">
                         <label>Latitude</label>
-                        <input type="number" name="latitude" #latitude="ngModel" placeholder="Enter latitude" class="form-control"
+                        <input
+                          type="number"
+                          name="latitude"
+                          #latitude="ngModel"
+                          placeholder="Enter latitude"
+                          class="form-control"
                           [class.is-invalid]="
                             (formSubmitted || latitude.touched) &&
                             !latitude.valid
                           "
-                          [(ngModel)]="item.latitude" required />
+                          [(ngModel)]="item.latitude"
+                          required
+                        />
                         <div class="invalid-feedback">
                           {{ "Latitude is required." }}
                         </div>
@@ -167,12 +305,20 @@
                     <div class="col">
                       <div class="form-group">
                         <label>Longitude</label>
-                        <input type="number" name="longitude" #longitude="ngModel" placeholder="Enter longitude" class="form-control"
+                        <input
+                          type="number"
+                          name="longitude"
+                          #longitude="ngModel"
+                          placeholder="Enter longitude"
+                          class="form-control"
                           [class.is-invalid]="
                             (formSubmitted || longitude.touched) &&
                             !longitude.valid
                           "
-                          [(ngModel)]="item.longitude" required pattern=".{6,}" />
+                          [(ngModel)]="item.longitude"
+                          required
+                          pattern=".{6,}"
+                        />
                         <div class="invalid-feedback">
                           {{ "Longitude is required." }}
                         </div>
@@ -182,11 +328,18 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label>End Date</label>
-                        <input name="endDate" #endDate="ngModel" placeholder="Enter End Date" class="form-control"
+                        <input
+                          name="endDate"
+                          #endDate="ngModel"
+                          placeholder="Enter End Date"
+                          class="form-control"
                           [class.is-invalid]="
                             (formSubmitted || endDate.touched) && !endDate.valid
                           "
-                          [(ngModel)]="item.endDate" required />
+                          [(ngModel)]="item.endDate"
+                          required
+                          datePicker="1"
+                        />
                         <div class="invalid-feedback">
                           {{ "End Date is required." }}
                         </div>
@@ -207,6 +360,71 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="add-city-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add City</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <city-add-form
+          [city]="city"
+          (postSubmit)="populateCityOptions()"
+        ></city-add-form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" (click)="saveCity()">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="add-area-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Area</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <area-add-form
+          [show-add-city]="false"
+          [area]="area"
+          (postSubmit)="populateAreaOptions()"
+        ></area-add-form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" (click)="saveArea()">
+          Save
+        </button>
       </div>
     </div>
   </div>
