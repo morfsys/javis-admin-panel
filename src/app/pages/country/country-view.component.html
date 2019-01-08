@@ -82,7 +82,7 @@
                       <div class="form-group">
                         <label>ISD code</label>
                         <input
-                          type="number"
+                          type="text"
                           name="isdCode"
                           #isdCode="ngModel"
                           placeholder="Enter ISD Code"
@@ -92,7 +92,7 @@
                           "
                           [(ngModel)]="item.isd"
                           required
-                          pattern="\[0-9]{2,3}"
+                          pattern="[0-9]{2,3}"
                           [inputMaxLength]="3"
                           allowedChars="[0-9]"
                         />

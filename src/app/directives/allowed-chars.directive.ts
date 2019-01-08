@@ -1,23 +1,20 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from "@angular/core";
 
 @Directive({
-  selector: '[allowedChars]'
+  selector: "[allowedChars]"
 })
 export class AllowedCharsDirective {
   @Input() allowedChars = ".";
-  constructor(
-    private elem: ElementRef
-  ) { }
+  constructor(private elem: ElementRef) {}
 
   ngOnInit() {
     let el = this.elem.nativeElement;
-    $(el).on('keydown', event=>{
-      if(event.keyCode == 8 || event.keyCode == 9) {
+    $(el).on("keydown", event => {
+      if ([8, 9, 37, 39].indexOf(event.keyCode) >= 0) {
         return true;
       }
-      if(!new RegExp(this.allowedChars).test(event.key)) return false;
+      if (!new RegExp(this.allowedChars).test(event.key)) return false;
       return true;
     });
   }
-
 }

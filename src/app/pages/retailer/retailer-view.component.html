@@ -66,9 +66,7 @@
                           allowedChars="[\d]"
                         />
                         <div class="invalid-feedback">
-                          {{
-                            "Invalid number"
-                          }}
+                          {{ "Invalid number" }}
                         </div>
                       </div>
                     </div>
@@ -93,9 +91,7 @@
                           allowedChars="[\d]"
                         />
                         <div class="invalid-feedback">
-                          {{
-                            "Invalid number"
-                          }}
+                          {{ "Invalid number" }}
                         </div>
                       </div>
                     </div>
@@ -106,7 +102,7 @@
                         <div class="row">
                           <div class="col-2">
                             <input
-                              type="number"
+                              type="text"
                               name="isd"
                               #isd="ngModel"
                               placeholder="ISD"
@@ -116,7 +112,7 @@
                               "
                               [(ngModel)]="item.landline.isd"
                               required
-                              pattern=".{3}"
+                              pattern="[0-9]{2,3}"
                               [inputMaxLength]="3"
                               allowedChars="[\d]"
                             />
@@ -126,7 +122,7 @@
                           </div>
                           <div class="col-4">
                             <input
-                              type="number"
+                              type="text"
                               name="std"
                               #std="ngModel"
                               placeholder="STD"
@@ -136,7 +132,7 @@
                               "
                               [(ngModel)]="item.landline.std"
                               required
-                              pattern=".{4}"
+                              pattern="[0-9]{3,4}"
                               [inputMaxLength]="4"
                               allowedChars="[\d]"
                             />
@@ -146,7 +142,7 @@
                           </div>
                           <div class="col-6">
                             <input
-                              type="number"
+                              type="text"
                               name="landlineNumber"
                               #landlineNumber="ngModel"
                               placeholder="NUMBER"
@@ -157,7 +153,7 @@
                               "
                               [(ngModel)]="item.landline.number"
                               required
-                              pattern=".{6}"
+                              pattern="[0-9]{6}"
                               [inputMaxLength]="6"
                               allowedChars="[\d]"
                             />
@@ -193,7 +189,7 @@
                       <div class="form-group">
                         <label>Pin Code</label>
                         <input
-                          type="number"
+                          type="text"
                           name="pinCode"
                           #pinCode="ngModel"
                           placeholder="Enter pin code"
@@ -203,9 +199,8 @@
                           "
                           [(ngModel)]="item.pincode"
                           required
-                          pattern=".{6}"
+                          pattern="[0-9]{6}"
                           [inputMaxLength]="6"
-                          
                           allowedChars="[\d]"
                         />
                         <div class="invalid-feedback">
@@ -269,17 +264,19 @@
                       <div class="form-group">
                         <label>Channel</label>
                         <ng-selectize
-                        *ngIf="showChannelSelect"
-                        #channel="ngSelectize"
-                        [class.is-invalid]="formSubmitted && !channel.hasNgValid"
-                        placeholder="SELECT CHANNEL"
-                        name="channel"
-                        [config]="selectizeConfig"
-                        [options]="channelOptions"
-                        [(ngModel)]="item.channel"
-                        required
-                      ></ng-selectize>
-                      <div class="invalid-feedback">Channel is required.</div>
+                          *ngIf="showChannelSelect"
+                          #channel="ngSelectize"
+                          [class.is-invalid]="
+                            formSubmitted && !channel.hasNgValid
+                          "
+                          placeholder="SELECT CHANNEL"
+                          name="channel"
+                          [config]="selectizeConfig"
+                          [options]="channelOptions"
+                          [(ngModel)]="item.channel"
+                          required
+                        ></ng-selectize>
+                        <div class="invalid-feedback">Channel is required.</div>
                       </div>
                     </div>
                     <div class="col">
@@ -303,7 +300,7 @@
                         </div>
                       </div>
                     </div>
-                    
+
                     <div class="col-md-4">
                       <div class="form-group">
                         <label>End Date</label>
@@ -312,9 +309,7 @@
                           #endDate="datePicker"
                           placeholder="Enter End Date"
                           class="form-control"
-                          [class.is-invalid]="
-                            (formSubmitted) && !endDate.dateSet
-                          "
+                          [class.is-invalid]="formSubmitted && !endDate.dateSet"
                           [(ngModel)]="item.endDate"
                           datePicker="{}"
                           readOnly

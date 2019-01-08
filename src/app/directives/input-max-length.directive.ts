@@ -12,8 +12,7 @@ export class InputMaxLengthDirective implements OnInit {
     $(el).on("keydown", event => {
       if (
         el.value.length == this.inputMaxLength &&
-        event.keyCode != 8 &&
-        event.keyCode != 9
+        [8, 9, 37, 39].indexOf(event.keyCode) < 0
       )
         return false;
       return true;

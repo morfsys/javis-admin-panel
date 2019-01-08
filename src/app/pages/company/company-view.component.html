@@ -22,7 +22,7 @@
             <div class="row">
               <div class="col-md-8 mx-auto">
                 <form
-                  autocomplete="off"
+                  autocomplete="new-password"
                   (submit)="addCompany(companyForm)"
                   #companyForm="ngForm"
                   class="uppercase-form"
@@ -32,6 +32,7 @@
                       <div class="form-group">
                         <label>Company Name</label>
                         <input
+                          autocomplete="off"
                           type="text"
                           name="companyName"
                           #companyName="ngModel"
