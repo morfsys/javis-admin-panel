@@ -33,7 +33,8 @@
               "./node_modules/nvd3/build/nv.d3.css",
               "src/assets/scss/app.scss",
               "./src/styles.css",
-              "./src/assets/mfont/style.css"
+              "./src/assets/mfont/style.css",
+              "./src/assets/js/bootstrap-datepicker/bootstrap-datepicker.css"
             ],
             "scripts": [
               "./node_modules/pace-js/pace.min.js",
@@ -42,7 +43,8 @@
               "./node_modules/bootstrap/dist/js/bootstrap.js",
               "./node_modules/datatables.net/js/jquery.dataTables.js",
               "./node_modules/ng-selectize/selectize/selectize.standalone.js",
-              "./node_modules/imagesloaded/imagesloaded.pkgd.min.js"
+              "./node_modules/imagesloaded/imagesloaded.pkgd.min.js",
+              "./src/assets/js/bootstrap-datepicker/bootstrap-datepicker.js"
             ]
           },
           "configurations": {

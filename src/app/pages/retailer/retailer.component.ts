@@ -24,6 +24,7 @@ export class RetailerComponent implements OnInit {
 
   getItems() {
     this.mService.getItems().subscribe(items => {
+      console.log(items);
       this.items = items;
       this.viewItem = false;
       setTimeout(()=>{

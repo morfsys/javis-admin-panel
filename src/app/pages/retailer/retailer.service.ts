@@ -10,12 +10,16 @@ export class RetailerService {
     name: "Retailer name",
     mobile: "9876543210",
     altMobile: "9876543210",
-    landline: "2316499",
+    landline: {
+      isd: "123",
+      std: "1233",
+      number: "213123"
+    },
     address: "Address here",
     pincode: "400001",
     area: "adbad",
     city: "Mumbai",
-    channel: "",
+    channel: "Dummy",
     FSSAILicense: "",
     latitude: "",
     longitude: "",
@@ -29,7 +33,7 @@ export class RetailerService {
   }
 
   addItem(item): Observable<any> {
-    
+    console.log(item)
     return item._id == 0? new Observable(observer=>{
       try{
         let id = this.items.push(item);

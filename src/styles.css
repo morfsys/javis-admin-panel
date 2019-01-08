@@ -39,6 +39,9 @@ ng-selectize.is-invalid ~ .invalid-feedback {
 .side-nav .side-nav-inner .side-nav-menu li.active a  .icon-holder{
     color: #FA2F63 !important;
 }
+.form-control[readonly] {
+    background-color: inherit !important;
+}
 
 /* DATATABLES OVERRIDE */
 

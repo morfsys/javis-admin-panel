@@ -63,16 +63,16 @@
                           required
                           pattern="[56789][0-9]{9}"
                           [inputMaxLength]="10"
+                          allowedChars="[\d]"
                         />
                         <div class="invalid-feedback">
                           {{
-                            mobile.missing
-                              ? "Mobile is required."
-                              : "10 digits allowed"
+                            "Invalid number"
                           }}
                         </div>
                       </div>
                     </div>
+                    <div class="w-100 d-md-none"></div>
                     <div class="col">
                       <div class="form-group">
                         <label>Alternate Mobile number</label>
@@ -90,12 +90,11 @@
                           required
                           pattern="[56789][0-9]{9}"
                           [inputMaxLength]="10"
+                          allowedChars="[\d]"
                         />
                         <div class="invalid-feedback">
                           {{
-                            altMobile.missing
-                              ? "Mobile is required."
-                              : "Minimum 6 digits allowed"
+                            "Invalid number"
                           }}
                         </div>
                       </div>
@@ -105,7 +104,7 @@
                       <div class="form-group">
                         <label>Landline</label>
                         <div class="row">
-                          <div class="col-md-2">
+                          <div class="col-2">
                             <input
                               type="number"
                               name="isd"
@@ -119,12 +118,13 @@
                               required
                               pattern=".{3}"
                               [inputMaxLength]="3"
+                              allowedChars="[\d]"
                             />
                             <div class="invalid-feedback">
                               {{ "ISD is invalid" }}
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-4">
                             <input
                               type="number"
                               name="std"
@@ -138,12 +138,13 @@
                               required
                               pattern=".{4}"
                               [inputMaxLength]="4"
+                              allowedChars="[\d]"
                             />
                             <div class="invalid-feedback">
                               {{ "STD is invalid" }}
                             </div>
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-6">
                             <input
                               type="number"
                               name="landlineNumber"
@@ -158,6 +159,7 @@
                               required
                               pattern=".{6}"
                               [inputMaxLength]="6"
+                              allowedChars="[\d]"
                             />
                             <div class="invalid-feedback">
                               {{ "Number is invalid" }}
@@ -203,6 +205,8 @@
                           required
                           pattern=".{6}"
                           [inputMaxLength]="6"
+                          
+                          allowedChars="[\d]"
                         />
                         <div class="invalid-feedback">
                           {{ "Invalid pincode" }}
@@ -263,6 +267,23 @@
                     <div class="w-100"></div>
                     <div class="col">
                       <div class="form-group">
+                        <label>Channel</label>
+                        <ng-selectize
+                        *ngIf="showChannelSelect"
+                        #channel="ngSelectize"
+                        [class.is-invalid]="formSubmitted && !channel.hasNgValid"
+                        placeholder="SELECT CHANNEL"
+                        name="channel"
+                        [config]="selectizeConfig"
+                        [options]="channelOptions"
+                        [(ngModel)]="item.channel"
+                        required
+                      ></ng-selectize>
+                      <div class="invalid-feedback">Channel is required.</div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
                         <label>FSSAILicense</label>
                         <input
                           name="FSSAILicense"
@@ -275,12 +296,36 @@
                           "
                           [(ngModel)]="item.FSSAILicense"
                           required
+                          allowedChars="[\w\d]"
                         />
                         <div class="invalid-feedback">
                           {{ "FSSAI License is required." }}
                         </div>
                       </div>
                     </div>
+                    
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>End Date</label>
+                        <input
+                          name="endDate"
+                          #endDate="datePicker"
+                          placeholder="Enter End Date"
+                          class="form-control"
+                          [class.is-invalid]="
+                            (formSubmitted) && !endDate.dateSet
+                          "
+                          [(ngModel)]="item.endDate"
+                          datePicker="{}"
+                          readOnly
+                          #datePicker
+                        />
+                        <div class="invalid-feedback">
+                          {{ "End Date is required." }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
                     <div class="col">
                       <div class="form-group">
                         <label>Latitude</label>
@@ -317,31 +362,9 @@
                           "
                           [(ngModel)]="item.longitude"
                           required
-                          pattern=".{6,}"
                         />
                         <div class="invalid-feedback">
                           {{ "Longitude is required." }}
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-100"></div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>End Date</label>
-                        <input
-                          name="endDate"
-                          #endDate="ngModel"
-                          placeholder="Enter End Date"
-                          class="form-control"
-                          [class.is-invalid]="
-                            (formSubmitted || endDate.touched) && !endDate.valid
-                          "
-                          [(ngModel)]="item.endDate"
-                          required
-                          datePicker="1"
-                        />
-                        <div class="invalid-feedback">
-                          {{ "End Date is required." }}
                         </div>
                       </div>
                     </div>

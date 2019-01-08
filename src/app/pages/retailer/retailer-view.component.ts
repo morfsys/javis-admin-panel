@@ -1,7 +1,8 @@
 import { AreaService } from "./../area/area.service";
 import { RetailerService } from "./retailer.service";
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from "@angular/core";
 import { CityService } from "../city/city.service";
+import { ChannelService } from "../channel/channel.service";
 
 declare var $: any;
 
@@ -33,15 +34,18 @@ export class RetailerViewComponent implements OnInit {
   @Input("cancel-allowed") cancelAllowed = false;
   @Output() postSubmit = new EventEmitter();
   @Output() clickedCancel = new EventEmitter();
-
+  @ViewChild('datePicker') datePicker;
+ 
   constructor(
     private mService: RetailerService,
     private areaService: AreaService,
-    private cityService: CityService
+    private cityService: CityService,
+    private channelService: ChannelService
   ) {}
 
   ngOnInit() {
     this.populateCityOptions();
+    this.populateChannelOptions();
   }
 
   formSubmitted = false;
@@ -55,7 +59,8 @@ export class RetailerViewComponent implements OnInit {
       .addItem(
         Object.assign({ _id: 0 }, this.item, {
           name: this.item.name.toUpperCase(),
-          address: this.item.address.toUpperCase()
+          address: this.item.address.toUpperCase(),
+          endDate: this.datePicker.nativeElement.value
         })
       )
       .subscribe(company => {
@@ -72,7 +77,7 @@ export class RetailerViewComponent implements OnInit {
   cityOptions: any = [];
   showCitySelect = true;
   areaOptions: any = [];
-  showAreaSelect: any = [];
+  showAreaSelect: boolean = true;
 
   populateCityOptions() {
     this.cityService.getItems().subscribe(
@@ -91,13 +96,28 @@ export class RetailerViewComponent implements OnInit {
   populateAreaOptions() {
     this.areaService.getItems(this.item.city).subscribe(
       cities => {
-        console.log(cities);
         this.areaOptions = cities.map(
           c => (c = { label: c.name, value: c.name, code: c.code })
         );
         this.showAreaSelect = false;
         setTimeout(() => (this.showAreaSelect = true), 100);
         $("#add-area-modal").modal("hide");
+      },
+      err => console.log(err)
+    );
+  }
+
+  channelOptions = [];
+  showChannelSelect: boolean = true;
+  populateChannelOptions() {
+    this.channelService.getItems().subscribe(
+      channels => {
+        console.log(channels);
+        this.channelOptions = channels.map(
+          c => (c = { label: c.name, value: c.name, code: c.name })
+        );
+        this.showChannelSelect = false;
+        setTimeout(() => (this.showChannelSelect = true), 100);
       },
       err => console.log(err)
     );
