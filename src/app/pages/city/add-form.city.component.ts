@@ -175,7 +175,7 @@ export class AddFormCityComponent implements OnInit {
       .subscribe(
         states =>
           (this.stateOptions = states.map(
-            s => (s = { label: s.name, value: s.name, code: s.code })
+            s => (s = { label: s.name, value: s._id, code: s.code })
           )),
         err => console.log(err)
       );
@@ -183,6 +183,7 @@ export class AddFormCityComponent implements OnInit {
 
   formSubmitted = false;
   addCity(form) {
+    $('.alert-danger').hide();
     this.formSubmitted = true;
     if (!form.valid) {
       return false;
@@ -205,7 +206,11 @@ export class AddFormCityComponent implements OnInit {
         )
       )
       .subscribe(city => {
-        this.postSubmit.emit(city);
+        if(city.level != 'Error') {
+          this.postSubmit.emit(city);
+        }else{
+          $('.alert-danger').text(city.message).show();
+        }
       });
   }
 }

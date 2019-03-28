@@ -32,7 +32,7 @@ export class CountryViewComponent implements OnInit {
 
     formSubmitted = false;
     addItem(form) {
-
+        $('.alert-danger').hide();
         this.formSubmitted = true;
         if (!form.valid) {
             return false;
@@ -44,15 +44,19 @@ export class CountryViewComponent implements OnInit {
             currency: this.item.currency.toUpperCase(),
             currencyCode: this.item.currencyCode.toUpperCase()
         })).subscribe(company => {
-            this.item = {
-                _id: 0,
-                name: '',
-                code: "",
-                isd: "",
-                currency: "",
-                currencyCode: ""
-            };
-            this.postSubmit.emit();
+            if(company.level != 'Error') {
+                this.postSubmit.emit();
+                this.item = {
+                    _id: 0,
+                    name: '',
+                    code: "",
+                    isd: "",
+                    currency: "",
+                    currencyCode: ""
+                };
+            }else{
+                $('.alert-danger').text(company.message).show();
+            }
         })
     }
 

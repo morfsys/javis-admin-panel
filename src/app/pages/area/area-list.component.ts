@@ -59,7 +59,7 @@ export class AreaListComponent implements OnInit {
 
   editItem(item: any) {
     this.updateItem.emit({
-      item: item
+      item: {...item, city: item.cityId}
     })
   }
 

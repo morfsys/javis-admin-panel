@@ -32,7 +32,7 @@ export class StateViewComponent implements OnInit {
 
     formSubmitted = false;
     addItem(form) {
-
+        $('.alert').hide();
         this.formSubmitted = true;
         if (!form.valid) {
             return false;
@@ -43,13 +43,18 @@ export class StateViewComponent implements OnInit {
             code: this.item.code.toUpperCase(),
             country: this.item.country.toUpperCase()
         })).subscribe(company => {
-            this.item = {
-                _id: 0,
-                name: '',
-                code: "",
-                country: ""
-            };
-            this.postSubmit.emit();
+            if(company.level != 'Error') {
+                this.item = {
+                    _id: 0,
+                    name: '',
+                    code: "",
+                    country: ""
+                };
+                this.postSubmit.emit();
+            }else{
+                $('.alert-danger').text(company.message).show();
+            }
+            
         })
     }
 
@@ -66,7 +71,7 @@ export class StateViewComponent implements OnInit {
         this.countrtService.getItems().subscribe(
             countries => {
                 console.log(countries);
-                this.countryOptions = countries.map(c => c = { label: c.name, value: c.name, code: c.code });
+                this.countryOptions = countries.map(c => c = { label: c.name, value: c._id, code: c.code });
                 this.showCountrySelect = false;
                 setTimeout(() => this.showCountrySelect = true, 100);
             },

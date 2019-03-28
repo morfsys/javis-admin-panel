@@ -63,7 +63,7 @@
                           "
                           [(ngModel)]="item.code"
                           required
-                          pattern="[a-zA-Z]{3}"
+                          pattern="[a-zA-Z]{2,3}"
                           [inputMaxLength]="3"
                           allowedChars="[a-zA-Z]"
                         />
@@ -152,6 +152,9 @@
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <div class="alert alert-danger" [style.display]="'none'">
+                    
                   </div>
                   <div class="row">
                     <div class="col">

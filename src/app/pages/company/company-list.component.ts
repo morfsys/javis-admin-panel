@@ -62,7 +62,7 @@ export class CompanyListComponent implements OnInit {
 
   updateCompany(item: any) {
     this.updateItem.emit({
-      item: item
+      item: {...item, city: item.cityId}
     })
   }
 

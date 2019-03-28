@@ -59,7 +59,7 @@ export class CityListComponent implements OnInit {
 
   editItem(item: any) {
     this.updateItem.emit({
-      item: item
+      item: {...item, state: item.stateId}
     })
   }
 

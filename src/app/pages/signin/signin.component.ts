@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SigninService } from './signin.service';
+import { Router } from '@angular/router';
+import { ResourcesService } from 'src/app/services/resources.service';
 
 @Component({
   selector: 'app-signin',
@@ -7,9 +10,77 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private signinService: SigninService,
+    private router: Router,
+    private resource: ResourcesService
+  ) { }
 
   ngOnInit() {
+    this.resource.clearToken();
   }
 
+  loginUser(form, username, password) {
+    // form = {
+    //   ...form,
+    //   failed: false,
+    //   failMessage: false
+    // };
+    form.failed = false;
+    form.failMessage = "";
+    this.fgForm.success = false;
+    console.log(form);
+    if(!form.valid) {
+      return console.log('Form is invalid');
+    }
+    this.signinService.signIn(username, password).subscribe(resp=>{
+      console.log(resp);
+      if(resp.status == 0) {
+        form.failed = true;
+        form.failMessage = resp.message;
+        return false;
+      }
+      this.resource.setToken(resp).subscribe(()=>{
+        this.router.navigate(['/dashboard']);
+      }, err=>{
+        console.log(err);
+      })
+      
+    }, err=>{
+      console.log(err.message);
+    });
+  }
+
+  @ViewChild('fgForm') fgForm;
+  forgotPasswordForm: boolean = false;
+
+  sendFGEmail(form, email) {
+    // form = {
+    //   ...form,
+    //   failed: false,
+    //   failMessage: false
+    // };
+    form.failed = false;
+    form.success = false;
+    form.failMessage = "";
+    form.processing = true;
+    console.log(form);
+    if(!form.valid) {
+      return console.log('Form is invalid');
+    }
+    this.signinService.forgotPassword(email).subscribe(resp=>{
+      form.processing = false;
+      if(resp.message != 'SUCCESS') {
+        form.failed = true;
+        form.failMessage = resp.message;
+        return false;
+      }
+      this.forgotPasswordForm = false;
+      this.fgForm.success = true;
+
+      
+    }, err=>{
+      console.log(err.message);
+    });
+  }
 }

@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { of, Observable, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { ResourcesService } from 'src/app/services/resources.service';
+import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,21 +33,62 @@ export class CityService {
       state: "WEST BENGAL"
     },
   ]
-  constructor() { }
-
-  getItems(): Observable<Array<any>> {
-    return of(this.items.map((c, i)=>c = {...c, _id: i+1 }));
+  constructor(
+    private http: HttpClient,
+    private resource: ResourcesService
+  ) { 
   }
 
-  addItem(city): Observable<any> {
-    return new Observable(observer=>{
-      try {
-        let id = this.items.push(city);
-        observer.next({...city, _id: id+1});
-      } catch(err) {
-        observer.error(err);
-      }
-    })
+  getItems(): Observable<Array<any>> {
+    return this.http
+    .get<Array<any>>(
+      environment.serverUrl +
+        "/city/list/" +
+        this.resource.getUsername() +
+        "/0/0"
+    )
+    .pipe(
+      map(v =>
+        v.map(e => {
+          return {
+            _id: e.cityId,
+            name: e.cityName,
+            code: e.cityCode,
+            population: e.population,
+            stdCode: e.stdCode,
+            state: e.stateName,
+            stateId: e.stateId
+          };
+        })
+      )
+    );
+  }
+
+  addItem(item): Observable<any> {
+    return item._id == 0
+      ? this.http.post(
+        environment.serverUrl + "/city/add",
+        {
+          userName: this.resource.getUsername().toUpperCase(),
+          cityName: item.name,
+          cityCode: item.code,
+          stateId: item.state,
+          population: item.population,
+          stdCod: item.stdCode
+        }
+      )
+      : this.http.post(
+        environment.serverUrl + "/city/edit",
+        {
+          cityId: item._id,
+          userName: this.resource.getUsername().toUpperCase(),
+          cityName: item.name,
+          cityCode: item.code,
+          stateId: item.state,
+          population: item.population,
+          stdCod: item.stdCode
+        }
+      );
   }
 
   

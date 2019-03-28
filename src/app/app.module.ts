@@ -10,7 +10,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgSelectizeModule } from "ng-selectize";
 import { DataTablesModule } from "angular-datatables";
 import { ClickOutsideModule } from "ng-click-outside";
@@ -62,6 +62,7 @@ import { ProfileComponent } from "./pages/profile/profile.component";
 import { InputMaxLengthDirective } from "./directives/input-max-length.directive";
 import { AllowedCharsDirective } from "./directives/allowed-chars.directive";
 import { DatePickerDirective } from "./directives/date-picker.directive";
+import { MyHttpInterceptor } from "./http-interceptor";
 
 @NgModule({
   imports: [
@@ -72,7 +73,8 @@ import { DatePickerDirective } from "./directives/date-picker.directive";
     PerfectScrollbarModule,
     NgSelectizeModule,
     DataTablesModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
@@ -123,7 +125,13 @@ import { DatePickerDirective } from "./directives/date-picker.directive";
     AllowedCharsDirective,
     DatePickerDirective
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyHttpInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

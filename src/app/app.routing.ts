@@ -17,6 +17,7 @@ import { BankComponent } from "./pages/bank/bank.component";
 import { UQCComponent } from "./pages/unit-quantity-code/uqc.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { ProfileComponent } from "./pages/profile/profile.component";
+import { AuthGaurdService } from "./services/auth-gaurd.service";
 
 export const AppRoutes: Routes = [
   {
@@ -26,6 +27,7 @@ export const AppRoutes: Routes = [
   {
     path: "",
     component: CommonLayoutComponent,
+    canActivate: [AuthGaurdService], 
     children: [
       {
         path: "",

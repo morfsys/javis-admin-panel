@@ -46,6 +46,7 @@ export class RetailerViewComponent implements OnInit {
   ngOnInit() {
     this.populateCityOptions();
     this.populateChannelOptions();
+    this.populateAreaOptions();
   }
 
   formSubmitted = false;
@@ -83,7 +84,7 @@ export class RetailerViewComponent implements OnInit {
     this.cityService.getItems().subscribe(
       cities => {
         this.cityOptions = cities.map(
-          c => (c = { label: c.name, value: c.name, code: c.code })
+          c => (c = { label: c.name, value: c._id, code: c.code })
         );
         this.showCitySelect = false;
         setTimeout(() => (this.showCitySelect = true), 100);
@@ -94,12 +95,14 @@ export class RetailerViewComponent implements OnInit {
   }
 
   populateAreaOptions() {
-    this.areaService.getItems(this.item.city).subscribe(
+    // this.areaService.getItems(this.item.city).subscribe(
+    this.areaService.getItems().subscribe(
       cities => {
         this.areaOptions = cities.map(
-          c => (c = { label: c.name, value: c.name, code: c.code })
+          c => (c = { label: c.name, value: c._id, code: c.code })
         );
         this.showAreaSelect = false;
+        console.log(this.areaOptions);
         setTimeout(() => (this.showAreaSelect = true), 100);
         $("#add-area-modal").modal("hide");
       },
@@ -114,7 +117,7 @@ export class RetailerViewComponent implements OnInit {
       channels => {
         console.log(channels);
         this.channelOptions = channels.map(
-          c => (c = { label: c.name, value: c.name, code: c.name })
+          c => (c = { label: c.name, value: c._id, code: c.name })
         );
         this.showChannelSelect = false;
         setTimeout(() => (this.showChannelSelect = true), 100);
@@ -125,7 +128,7 @@ export class RetailerViewComponent implements OnInit {
 
   citySelectChanged() {
     console.log(this.item.city);
-    this.populateAreaOptions();
+    // this.populateAreaOptions();
   }
 
   city = {};

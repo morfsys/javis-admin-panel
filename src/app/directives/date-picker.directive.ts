@@ -14,7 +14,7 @@ export class DatePickerDirective implements OnInit {
     let elem = this.el.nativeElement;
     $(elem).on('blur', ()=>{this.touched = true;})
     $(elem).datepicker(Object.assign({
-      format: "dd-mm-yyyy"
+      format: "yyyy-mm-dd"
     }, this.datePicker)).on('changeDate', ()=>{
       this.dateSet = true;
     });

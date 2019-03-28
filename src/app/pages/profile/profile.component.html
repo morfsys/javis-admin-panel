@@ -73,6 +73,32 @@
             <hr />
             <div class="row">
               <div class="col-md-3">
+                <p class="mrg-top-10 text-dark"><b>New Password</b></p>
+              </div>
+              <div class="col-md-6">
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="newPassword"
+                  #newPasswordField="ngModel"
+                  [class.is-invalid]="cpFormSubmitted && (!newPasswordField.valid)"
+                  pattern=".{6,}"
+                  required
+                />
+                <div class="invalid-feedback">
+                  {{ "Atleast 6 characters required" }}
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <button type="button" class="btn btn-primary" (click)="changePassword(newPasswordField, newPassword)">Change password</button>
+                <div class="alert alert-success float-right" [style.display]="newPasswordField.success?'inline-block':'none'">Password changed</div>
+              </div>
+            </div>
+            <hr/>
+            <div class="row">
+              <div class="col-md-3">
                 <p class="mrg-top-10 text-dark"><b>Avatar</b></p>
               </div>
               <div class="col-md-6">

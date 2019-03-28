@@ -1,46 +1,114 @@
 <div class="app">
   <div class="authentication">
-      <div class="sign-in">
-          <div class="row no-mrg-horizon">
-              <div class="col-md-8 no-pdd-horizon d-none d-md-block">
-                  <div class="full-height bg" style="background-image: url('assets/images/bg-image-no-javis-overlay.png')">
-                      <div class="img-caption">
-                          <h1 class="caption-title">We make spectacular</h1>
-                          <p class="caption-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-4 no-pdd-horizon">
-                  <div class="full-height bg-white height-100">
-                      <div class="vertical-align full-height pdd-horizon-70">
-                          <div class="table-cell">
-                              <div class="pdd-horizon-15">
-                                  <h2>Login</h2>
-                                  <p class="mrg-btm-15 font-size-13">Please enter your user name and password to login</p>
-                                  <form>
-                                      <div class="form-group">
-                                          <input type="email" class="form-control" placeholder="User name">
-                                      </div>
-                                      <div class="form-group">
-                                          <input type="password" class="form-control" placeholder="Password">
-                                      </div>
-                                      <div class="checkbox font-size-12">
-                                          <input id="agreement" name="agreement" type="checkbox">
-                                          <label for="agreement">Keep Me Signed In</label>
-                                      </div>
-                                      <button class="btn btn-primary" [routerLink]="['/']">Login</button>
-                                      <button class="btn btn-flat float-right" >Forgot password</button>
-                                  </form>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="login-footer">
-                          <!-- <img class="img-responsive inline-block" src="assets/images/logo/logo.png" width="100" alt="">
-                          <span class="font-size-13 pull-right pdd-top-10">Don't have an account? <a href="">Sign Up Now</a></span> -->
-                      </div>
-                  </div>
-              </div>
+    <div class="sign-in">
+      <div class="row no-mrg-horizon">
+        <div class="col-md-8 no-pdd-horizon d-none d-md-block">
+          <div
+            class="full-height bg"
+            style="background-image: url('assets/images/bg-image-no-javis-overlay.png')"
+          >
+            <div class="img-caption">
+              <h1 class="caption-title">We make spectacular</h1>
+              <p class="caption-text">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s.
+              </p>
+            </div>
           </div>
+        </div>
+        <div class="col-md-4 no-pdd-horizon">
+          <div class="full-height bg-white height-100">
+            <div class="vertical-align full-height pdd-horizon-70">
+              <div class="table-cell">
+                <div class="pdd-horizon-15">
+                  <h2>{{forgotPasswordForm?'Password reset':'Login'}}</h2>
+                  <p class="mrg-btm-15 font-size-13">
+                    {{forgotPasswordForm?'Please enter your email to reset password':'Please enter your user name and password to login'}}
+                  </p>
+                  <form #loginForm="ngForm"  (submit)="loginUser(loginForm, username, password)" [style.display]="forgotPasswordForm?'none':'inherit'">
+                    <div class="form-group">
+                      <input
+                        type="username"
+                        class="form-control"
+                        placeholder="User name"
+                        [(ngModel)]="username"
+                        name="username"
+                        #usernameField="ngModel"
+                        required
+                        [class.is-invalid]="loginForm.submitted && !usernameField.valid"
+                      />
+                      <div class="invalid-feedback">
+                        {{ "Username is required" }}
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Password"
+                        [(ngModel)]="password"
+                        name="password"
+                        #passwordField="ngModel"
+                        required
+                        [class.is-invalid]="loginForm.submitted && !passwordField.valid"
+                      />
+                      <div class="invalid-feedback">
+                        {{ "Password is required" }}
+                      </div>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="loginForm.failed">{{loginForm.failMessage}}</div>
+                    <div class="alert alert-success" *ngIf="fgForm.success">{{'Reset instructions sent'}}</div>
+                    <!-- <div class="checkbox font-size-12">
+                      <input id="agreement" name="agreement" type="checkbox" />
+                      <label for="agreement">Keep Me Signed In</label>
+                    </div> -->
+                    <button type="submit" class="btn btn-primary">
+                      Login
+                    </button>
+                    <button type="button" class="btn btn-flat float-right" (click)="forgotPasswordForm=true">
+                      Forgot password
+                    </button>
+                  </form>
+                  <form #fgForm="ngForm"  (submit)="sendFGEmail(fgForm, email)" [style.display]="!forgotPasswordForm?'none':'inherit'">
+                      <div class="form-group">
+                        <input
+                          type="email"
+                          class="form-control"
+                          placeholder="Email"
+                          [(ngModel)]="email"
+                          name="email"
+                          #emailField="ngModel"
+                          required
+                          [class.is-invalid]="fgForm.submitted && !emailField.valid"
+                        />
+                        <div class="invalid-feedback">
+                          {{ "Email is required" }}
+                        </div>
+                      </div>
+                      
+                      <div class="alert alert-danger" *ngIf="fgForm.failed">{{fgForm.failMessage}}</div>
+                      <!-- <div class="checkbox font-size-12">
+                        <input id="agreement" name="agreement" type="checkbox" />
+                        <label for="agreement">Keep Me Signed In</label>
+                      </div> -->
+                      <button type="submit" class="btn btn-primary" [disabled]="fgForm.processing">
+                        Reset Password
+                      </button>
+                      <button type="button" class="btn btn-flat float-right" [disabled]="fgForm.processing" (click)="forgotPasswordForm=false">
+                        Cancel
+                      </button>
+                    </form>
+                </div>
+              </div>
+            </div>
+            <div class="login-footer">
+              <!-- <img class="img-responsive inline-block" src="assets/images/logo/logo.png" width="100" alt="">
+                          <span class="font-size-13 pull-right pdd-top-10">Don't have an account? <a href="">Sign Up Now</a></span> -->
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>

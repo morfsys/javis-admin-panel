@@ -58,7 +58,7 @@ export class BankViewComponent implements OnInit {
         this.countryService.getItems().subscribe(
             countries => {
                 console.log(countries);
-                this.countryOptions = countries.map(c => c = { label: c.name, value: c.name, code: c.code });
+                this.countryOptions = countries.map(c => c = { label: c.name, value: c._id, code: c.code });
                 this.showCountrySelect = false;
                 setTimeout(() => this.showCountrySelect = true, 100);
             },

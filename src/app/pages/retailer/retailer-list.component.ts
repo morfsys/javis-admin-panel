@@ -59,7 +59,7 @@ export class RetailerListComponent implements OnInit {
 
   editItem(item: any) {
     this.updateItem.emit({
-      item: item
+      item: {...item, area: item.areaId, city: item.cityId, channel: item.channelId}
     })
   }
 

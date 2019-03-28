@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
+import { ResourcesService } from 'src/app/services/resources.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +22,29 @@ export class OutletService {
   }
 ];
   
+constructor(
+  private http: HttpClient,
+  private resource: ResourcesService
+) {
+  this.retrieveItems();
+}
 
   getItems(): Observable<Array<any>> {
     return of(this.items.map((c, i)=>c = {...c, _id: i+1}));
+  }
+
+  retrieveItems() {
+    return this.http
+      .get(
+        environment.serverUrl +
+          "/outlet/list/" +
+          this.resource.getUsername() +
+          "/0"
+      )
+      .pipe(map(v => []))
+      .subscribe(v => {
+        this.items = v;
+      });
   }
 
   addItem(item): Observable<any> {
@@ -52,6 +76,4 @@ export class OutletService {
       }
     })
   }
-  
-  constructor() { }
 }

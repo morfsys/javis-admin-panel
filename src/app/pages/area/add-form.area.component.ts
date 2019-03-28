@@ -15,7 +15,7 @@ declare var $: any;
   template: `
     <form
       autocomplete="off"
-      (submit)="addItem(areaForm)"
+      (submit)="addArea(areaForm)"
       #areaForm="ngForm"
       class="uppercase-form"
     >
@@ -140,8 +140,9 @@ export class AddFormAreaComponent implements OnInit {
       cities => {
         this.showCitySelect = false;
         this.cityOptions = cities.map(
-          s => (s = { label: s.name, value: s.name, code: s.code })
+          s => (s = { label: s.name, value: s._id, code: s.code })
         );
+        console.log(this.cityOptions, this.item.city);
         setTimeout(() => (this.showCitySelect = true), 100);
       },
       err => console.log(err)

@@ -56,7 +56,7 @@ export class BankListComponent implements OnInit {
 
   editItem(item: any) {
     this.updateItem.emit({
-      item: item
+      item: {...item, country: item.countryId}
     })
   }
 

@@ -38,8 +38,7 @@ export class AreaViewComponent implements OnInit {
         }
         // TODO: Logic to add company
         this.mService.addItem(Object.assign({ _id: 0 }, this.item, {
-            name: this.item.name.toUpperCase(),
-            city: this.item.city.toUpperCase()
+            name: this.item.name.toUpperCase()
         })).subscribe(company => {
 
             this.postSubmit.emit();
@@ -57,7 +56,7 @@ export class AreaViewComponent implements OnInit {
     populateCityOptions() {
         this.cityService.getItems().subscribe(
             cities => {
-                this.cityOptions = cities.map(c => c = { label: c.name, value: c.name, code: c.code });
+                this.cityOptions = cities.map(c => c = { label: c.name, value: c._id, code: c.code });
                 this.showCitySelect = false;
                 setTimeout(()=>this.showCitySelect=true, 100);
                 $('#add-city-modal').modal('hide');
