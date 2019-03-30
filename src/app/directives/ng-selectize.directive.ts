@@ -18,6 +18,7 @@ export class NgSelectizeDirective implements OnInit, AfterViewInit {
       let valid = ev.currentTarget.checkValidity();
       this.hasNgValid = valid;
     })
+    $(this.el.nativeElement).find('input[type=text]').attr('autocomplete', 'dontshow');
   }
 
 
