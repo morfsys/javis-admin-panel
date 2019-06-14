@@ -1,5 +1,6 @@
 import { CountryService } from './country.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ErrorHandlerService } from 'src/app/services/error-handler';
 
 declare var $: any;
 
@@ -23,7 +24,8 @@ export class CountryViewComponent implements OnInit {
     @Output() clickedCancel = new EventEmitter();
 
     constructor(
-        private mService: CountryService
+        private mService: CountryService,
+        private errorHandler: ErrorHandlerService
     ) { }
 
     ngOnInit() {
@@ -32,6 +34,8 @@ export class CountryViewComponent implements OnInit {
 
     formSubmitted = false;
     addItem(form) {
+        form.failed = false;
+        form.failedMessage = '';
         $('.alert-danger').hide();
         this.formSubmitted = true;
         if (!form.valid) {
@@ -43,20 +47,14 @@ export class CountryViewComponent implements OnInit {
             code: this.item.code.toUpperCase(),
             currency: this.item.currency.toUpperCase(),
             currencyCode: this.item.currencyCode.toUpperCase()
-        })).subscribe(company => {
-            if(company.level != 'Error') {
-                this.postSubmit.emit();
-                this.item = {
-                    _id: 0,
-                    name: '',
-                    code: "",
-                    isd: "",
-                    currency: "",
-                    currencyCode: ""
-                };
-            }else{
-                $('.alert-danger').text(company.message).show();
-            }
+        })).subscribe(item => {
+            if(item.level != "Error") {
+                this.postSubmit.emit(item);
+              }else{
+                this.errorHandler.showNoty({
+                    text: item.message
+                })
+              }
         })
     }
 

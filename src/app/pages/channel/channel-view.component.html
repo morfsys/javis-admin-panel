@@ -37,6 +37,10 @@
                       </div>
                     </div>
                   </div>
+                  <div
+                    class="alert alert-danger"
+                    [style.display]="channelForm.failed?'inherit':'none'"
+                  >{{channelForm.failedMessage}}</div>
                   <div class="row">
                     <div class="col">
                       <div class="text-right mrg-top-5">

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SigninService } from './signin.service';
 import { Router } from '@angular/router';
 import { ResourcesService } from 'src/app/services/resources.service';
+import { ErrorHandlerService } from 'src/app/services/error-handler';
 
 @Component({
   selector: 'app-signin',
@@ -13,7 +14,8 @@ export class SigninComponent implements OnInit {
   constructor(
     private signinService: SigninService,
     private router: Router,
-    private resource: ResourcesService
+    private resource: ResourcesService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit() {
@@ -36,10 +38,15 @@ export class SigninComponent implements OnInit {
     this.signinService.signIn(username, password).subscribe(resp=>{
       console.log(resp);
       if(resp.status == 0) {
-        form.failed = true;
-        form.failMessage = resp.message;
+        this.errorHandler.showNoty({
+          text: resp.message
+      })
         return false;
       }
+      // this.errorHandler.showNoty({
+      //   type: "success",
+      //   text: "Successfully logged in"
+      // })
       this.resource.setToken(resp).subscribe(()=>{
         this.router.navigate(['/dashboard']);
       }, err=>{

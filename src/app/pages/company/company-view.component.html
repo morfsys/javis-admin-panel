@@ -229,7 +229,10 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div [style.display]="companySubmitted && !companyForm.form.valid  ? 'inherit':'none'" class="alert alert-danger mt-1">Required fields missing</div> -->
+                  <div
+                    class="alert alert-danger"
+                    [style.display]="companyForm.failed?'inherit':'none'"
+                  >{{companyForm.failedMessage}}</div>
                   <div class="row">
                     <div class="col">
                       <div class="text-right mrg-top-5">

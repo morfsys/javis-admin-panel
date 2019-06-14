@@ -50,8 +50,8 @@ export class RetailerService {
               mobile: e.mobile,
               altMobile: e.alternateMobile,
               landline: {
-                isd: "",
-                std: "",
+                isd: e.isd,
+                std: e.std,
                 number: e.landline
               },
               address: e.address,
@@ -80,6 +80,8 @@ export class RetailerService {
           "retailerName": item.name,
           "mobile": item.mobile,
           "alternateMobile": item.altMobile,
+          "isd": item.landline.isd,
+          "std": item.landline.std,
           "landline": item.landline.number,
           "address": item.address,
           "pinCode": item.pincode,
@@ -96,6 +98,8 @@ export class RetailerService {
         "retailerName": item.name,
         "mobile": item.mobile,
         "alternateMobile": item.altMobile,
+        "isd": item.landline.isd,
+        "std": item.landline.std,
         "landline": item.landline.number,
         "address": item.address,
         "pinCode": item.pincode,

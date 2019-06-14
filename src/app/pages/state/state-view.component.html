@@ -84,7 +84,7 @@
                     <div class="w-100 d-md-none"></div>
                     <div class="col">
                       <div class="form-group">
-                        <label>City</label>
+                        <label>Country</label>
                         <ng-selectize
                           *ngIf="showCountrySelect"
                           #country="ngSelectize"
@@ -105,8 +105,8 @@
 
                   <div
                     class="alert alert-danger"
-                    [style.display]="'none'"
-                  ></div>
+                    [style.display]="stateForm.failed?'inherit':'none'"
+                  >{{stateForm.failedMessage}}</div>
                   <div class="row">
                     <div class="col">
                       <div class="text-right mrg-top-5">

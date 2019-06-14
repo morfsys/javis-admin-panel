@@ -1,5 +1,6 @@
 import { OutletService } from './outlet.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ErrorHandlerService } from 'src/app/services/error-handler';
 
 declare var $: any;
 
@@ -23,7 +24,8 @@ export class OutletViewComponent implements OnInit {
     @Output() clickedCancel = new EventEmitter();
 
     constructor(
-        private mService: OutletService
+        private mService: OutletService,
+        private errorHandler: ErrorHandlerService
     ) { }
 
     ngOnInit() {
@@ -32,6 +34,8 @@ export class OutletViewComponent implements OnInit {
 
     formSubmitted = false;
     addItem(form) {
+        form.failed = false;
+        form.failedMessage = '';
 
         this.formSubmitted = true;
         if (!form.valid) {
@@ -41,9 +45,14 @@ export class OutletViewComponent implements OnInit {
         this.mService.addItem(Object.assign({ _id: 0 }, this.item, {
             name: this.item.name.toUpperCase(),
             address: this.item.address.toUpperCase()
-        })).subscribe(company => {
-
-            this.postSubmit.emit();
+        })).subscribe(item => {
+            if(item.level != "Error") {
+                this.postSubmit.emit(item);
+              }else{
+                this.errorHandler.showNoty({
+                    text: item.message
+                  })
+              }
         })
     }
 

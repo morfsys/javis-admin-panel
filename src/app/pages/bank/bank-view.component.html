@@ -38,6 +38,10 @@
                       </div>
                     </div>
                   </div>
+                  <div
+                    class="alert alert-danger"
+                    [style.display]="bankForm.failed?'inherit':'none'"
+                  >{{bankForm.failedMessage}}</div>
                   <div class="row">
                     <div class="col">
                       <div class="text-right mrg-top-5">

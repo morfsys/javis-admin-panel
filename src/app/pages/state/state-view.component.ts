@@ -1,6 +1,7 @@
 import { CountryService } from './../country/country.service';
 import { StateService } from './state.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ErrorHandlerService } from 'src/app/services/error-handler';
 
 declare var $: any;
 
@@ -23,7 +24,8 @@ export class StateViewComponent implements OnInit {
 
     constructor(
         private mService: StateService,
-        private countrtService: CountryService
+        private countrtService: CountryService,
+        private errorHandler: ErrorHandlerService
     ) { }
 
     ngOnInit() {
@@ -32,7 +34,8 @@ export class StateViewComponent implements OnInit {
 
     formSubmitted = false;
     addItem(form) {
-        $('.alert').hide();
+        form.failed = false;
+        form.failedMessage = '';
         this.formSubmitted = true;
         if (!form.valid) {
             return false;
@@ -52,7 +55,9 @@ export class StateViewComponent implements OnInit {
                 };
                 this.postSubmit.emit();
             }else{
-                $('.alert-danger').text(company.message).show();
+                this.errorHandler.showNoty({
+                    text: company.message
+                })
             }
             
         })

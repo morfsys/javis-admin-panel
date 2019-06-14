@@ -31,7 +31,8 @@ export class AreaViewComponent implements OnInit {
 
     formSubmitted = false;
     addItem(form) {
-
+        form.failed = false;
+        form.failedMessage = '';
         this.formSubmitted = true;
         if (!form.valid) {
             return false;
@@ -39,9 +40,13 @@ export class AreaViewComponent implements OnInit {
         // TODO: Logic to add company
         this.mService.addItem(Object.assign({ _id: 0 }, this.item, {
             name: this.item.name.toUpperCase()
-        })).subscribe(company => {
-
-            this.postSubmit.emit();
+        })).subscribe(item => {
+            if(item.level != "Error") {
+                this.postSubmit.emit(item);
+              }else{
+                form.failed = true;
+                form.failedMessage = item.message;
+              }
         })
     }
 

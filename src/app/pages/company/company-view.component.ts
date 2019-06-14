@@ -1,6 +1,7 @@
 import { CityService } from './../city/city.service';
 import { CompanyService } from './company.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ErrorHandlerService } from 'src/app/services/error-handler';
 
 declare var $: any;
 
@@ -28,7 +29,8 @@ export class CompanyViewComponent implements OnInit {
 
     constructor(
         private companyService: CompanyService,
-        private cityService: CityService
+        private cityService: CityService,
+        private errorHandler: ErrorHandlerService
     ) { }
 
     ngOnInit() {
@@ -44,6 +46,8 @@ export class CompanyViewComponent implements OnInit {
     cityOptions: any = [];
     companySubmitted = false;
     addCompany(form) {
+        form.failed = false;
+        form.failedMessage = '';
         
         this.companySubmitted = true;
         if(!form.valid) {
@@ -58,8 +62,13 @@ export class CompanyViewComponent implements OnInit {
             address_1: this.item.address_1.toUpperCase(),
             address_2: this.item.address_2.toUpperCase()
         })).subscribe(company => {
-            
-            this.postSubmit.emit();
+            if(company.level != "Error") {
+                this.postSubmit.emit();
+            }else{
+                this.errorHandler.showNoty({
+                    text: company.message
+                  })
+            }
         })
     }
     showCitySelect = true;

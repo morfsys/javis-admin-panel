@@ -8,6 +8,7 @@ import {
   ViewChild
 } from "@angular/core";
 import { AreaService } from "./area.service";
+import { ErrorHandlerService } from "src/app/services/error-handler";
 declare var $: any;
 
 @Component({
@@ -34,7 +35,7 @@ declare var $: any;
               "
               [(ngModel)]="item.name"
               required
-              pattern="[a-zA-Z]+"
+              pattern="[a-zA-Z\\s]+"
             />
             <div class="invalid-feedback">{{ "Area name is required." }}</div>
           </div>
@@ -63,6 +64,10 @@ declare var $: any;
           </div>
         </div>
       </div>
+      <div
+      class="alert alert-danger"
+      [style.display]="areaForm.failed?'inherit':'none'"
+    >{{areaForm.failedMessage}}</div>
       <div class="row" [style.display]="showSubmit ? 'block' : 'none'">
         <div class="col">
           <div class="text-right mrg-top-5">
@@ -118,7 +123,8 @@ export class AddFormAreaComponent implements OnInit {
 
   constructor(
     private cityService: CityService,
-    private areaService: AreaService
+    private areaService: AreaService,
+    private errorHandler: ErrorHandlerService
   ) {}
 
   ngOnInit() {
@@ -151,6 +157,10 @@ export class AddFormAreaComponent implements OnInit {
 
   formSubmitted = false;
   addArea(form) {
+    form.failed = false;
+    form.failedMessage = '';
+    form.failed = false;
+    form.failedMessage = '';
     this.formSubmitted = true;
     if (!form.valid) {
       return false;
@@ -169,7 +179,13 @@ export class AddFormAreaComponent implements OnInit {
         )
       )
       .subscribe(item => {
-        this.postSubmit.emit(item);
+        if(item.level != "Error") {
+          this.postSubmit.emit(item);
+        }else{
+          this.errorHandler.showNoty({
+            text: item.message
+          })
+        }
       });
   }
 

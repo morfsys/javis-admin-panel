@@ -8,6 +8,7 @@ import {
   ViewChild
 } from "@angular/core";
 import { CityService } from "./city.service";
+import { ErrorHandlerService } from "src/app/services/error-handler";
 declare var $: any;
 
 @Component({
@@ -15,7 +16,7 @@ declare var $: any;
   template: `
     <form
       autocomplete="off"
-      (submit)="addCity(cityform.form)"
+      (submit)="addCity(cityform)"
       #cityform="ngForm"
       class="uppercase-form"
     >
@@ -34,7 +35,7 @@ declare var $: any;
               name="cityName"
               [(ngModel)]="city.name"
               required
-              pattern="[\\w]+"
+              pattern="[\\w\\s]+"
             />
             <div class="invalid-feedback">City is required.</div>
           </div>
@@ -127,6 +128,10 @@ declare var $: any;
           </div>
         </div>
       </div>
+      <div
+        class="alert alert-danger"
+        [style.display]="cityform.failed?'inherit':'none'"
+      >{{cityform.failedMessage}}</div>
       <div class="row">
         <div class="col">
           <div class="text-right mrg-top-5">
@@ -153,7 +158,8 @@ export class AddFormCityComponent implements OnInit {
 
   constructor(
     private stateService: StateService,
-    private cityService: CityService
+    private cityService: CityService,
+    private errorHandler: ErrorHandlerService
   ) {}
 
   ngOnInit() {
@@ -183,6 +189,8 @@ export class AddFormCityComponent implements OnInit {
 
   formSubmitted = false;
   addCity(form) {
+    form.failed = false;
+    form.failedMessage = '';
     $('.alert-danger').hide();
     this.formSubmitted = true;
     if (!form.valid) {
@@ -205,12 +213,14 @@ export class AddFormCityComponent implements OnInit {
           }
         )
       )
-      .subscribe(city => {
-        if(city.level != 'Error') {
-          this.postSubmit.emit(city);
-        }else{
-          $('.alert-danger').text(city.message).show();
-        }
-      });
+      .subscribe(item => {
+        if(item.level != "Error") {
+            this.postSubmit.emit(item);
+          }else{
+            this.errorHandler.showNoty({
+              text: item.message
+            })
+          }
+    });
   }
 }

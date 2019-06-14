@@ -153,9 +153,10 @@
                       </div>
                     </div>
                   </div>
-                  <div class="alert alert-danger" [style.display]="'none'">
-                    
-                  </div>
+                  <div
+                    class="alert alert-danger"
+                    [style.display]="countryForm.failed?'inherit':'none'"
+                  >{{countryForm.failedMessage}}</div>
                   <div class="row">
                     <div class="col">
                       <div class="text-right mrg-top-5">

@@ -3,6 +3,7 @@ import { RetailerService } from "./retailer.service";
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from "@angular/core";
 import { CityService } from "../city/city.service";
 import { ChannelService } from "../channel/channel.service";
+import { ErrorHandlerService } from "src/app/services/error-handler";
 
 declare var $: any;
 
@@ -35,13 +36,14 @@ export class RetailerViewComponent implements OnInit {
   @Output() postSubmit = new EventEmitter();
   @Output() clickedCancel = new EventEmitter();
   @ViewChild('datePicker') datePicker;
- 
+
   constructor(
     private mService: RetailerService,
     private areaService: AreaService,
     private cityService: CityService,
-    private channelService: ChannelService
-  ) {}
+    private channelService: ChannelService,
+    private errorHandler: ErrorHandlerService
+  ) { }
 
   ngOnInit() {
     this.populateCityOptions();
@@ -51,6 +53,8 @@ export class RetailerViewComponent implements OnInit {
 
   formSubmitted = false;
   addItem(form) {
+    form.failed = false;
+    form.failedMessage = '';
     this.formSubmitted = true;
     if (!form.valid) {
       return false;
@@ -64,8 +68,14 @@ export class RetailerViewComponent implements OnInit {
           endDate: this.datePicker.nativeElement.value
         })
       )
-      .subscribe(company => {
-        this.postSubmit.emit();
+      .subscribe(item => {
+        if (item.level != "Error") {
+          this.postSubmit.emit(item);
+        } else {
+          this.errorHandler.showNoty({
+            text: item.message
+          })
+        }
       });
   }
 

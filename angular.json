@@ -34,7 +34,9 @@
               "src/assets/scss/app.scss",
               "./src/styles.css",
               "./src/assets/mfont/style.css",
-              "./src/assets/js/bootstrap-datepicker/bootstrap-datepicker.css"
+              "./src/assets/js/bootstrap-datepicker/bootstrap-datepicker.css",
+              "./node_modules/noty/src/noty.scss",
+              "./node_modules/noty/src/themes/mint.scss"
             ],
             "scripts": [
               "./node_modules/pace-js/pace.min.js",
