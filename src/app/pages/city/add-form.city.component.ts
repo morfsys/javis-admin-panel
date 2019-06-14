@@ -79,8 +79,7 @@ declare var $: any;
               name="cityName"
               name="population"
               [(ngModel)]="city.population"
-              required
-            />
+            /><!--required-->
             <div class="invalid-feedback">Population is required.</div>
           </div>
         </div>
@@ -189,6 +188,7 @@ export class AddFormCityComponent implements OnInit {
 
   formSubmitted = false;
   addCity(form) {
+    console.log(form);
     form.failed = false;
     form.failedMessage = '';
     $('.alert-danger').hide();
@@ -200,6 +200,7 @@ export class AddFormCityComponent implements OnInit {
       .addItem(
         Object.assign(
           {
+            _id: 0,
             name: "",
             code: "",
             population: 0,

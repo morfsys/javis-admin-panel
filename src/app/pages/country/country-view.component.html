@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-heading border bottom">
           <h4 class="card-title">
-            {{ item._id > 0 ? "Edit" : "Add New" }} Retailer
+            {{ item._id > 0 ? "Edit" : "Add New" }} Country
           </h4>
           <span
             *ngIf="cancelAllowed"
@@ -121,7 +121,7 @@
                           [(ngModel)]="item.currency"
                           required
                           pattern="[a-zA-Z\s]+"
-                          allowedChars="[a-zA-Z]"
+                          allowedChars="[a-zA-Z\s]"
                         />
                         <div class="invalid-feedback">
                           {{ "Alphabetic characters required" }}

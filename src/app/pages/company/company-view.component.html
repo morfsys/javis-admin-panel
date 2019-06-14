@@ -71,15 +71,15 @@
                           "
                           [(ngModel)]="item.code"
                           required
-                          pattern=".{1,4}"
-                          maxlength="3"
+                          pattern=".{1,5}"
+                          maxlength="5"
                           allowedChars="[a-zA-Z]"
                         />
                         <div class="invalid-feedback">
                           {{
                             companyCode.missing
                               ? "Company code is required."
-                              : "Max 3 characters allowed"
+                              : "Max 5 characters allowed"
                           }}
                         </div>
                       </div>

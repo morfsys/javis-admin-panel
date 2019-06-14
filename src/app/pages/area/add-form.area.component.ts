@@ -35,7 +35,7 @@ declare var $: any;
               "
               [(ngModel)]="item.name"
               required
-              pattern="[a-zA-Z\\s]+"
+              pattern="[a-zA-Z0-9\\s]+"
             />
             <div class="invalid-feedback">{{ "Area name is required." }}</div>
           </div>

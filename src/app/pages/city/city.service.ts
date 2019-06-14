@@ -74,7 +74,7 @@ export class CityService {
           cityCode: item.code,
           stateId: item.state,
           population: item.population,
-          stdCod: item.stdCode
+          stdCode: item.stdCode
         }
       )
       : this.http.post(
@@ -86,7 +86,7 @@ export class CityService {
           cityCode: item.code,
           stateId: item.state,
           population: item.population,
-          stdCod: item.stdCode
+          stdCode: item.stdCode
         }
       );
   }

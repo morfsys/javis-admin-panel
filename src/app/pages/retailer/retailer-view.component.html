@@ -85,7 +85,7 @@
                             !altMobile.valid
                           "
                           [(ngModel)]="item.altMobile"
-                          required
+                          [required]="item._id > 0"
                           pattern="[56789][0-9]{9}"
                           [inputMaxLength]="10"
                           allowedChars="[\d]"
@@ -111,7 +111,7 @@
                                 (formSubmitted || isd.touched) && !isd.valid
                               "
                               [(ngModel)]="item.landline.isd"
-                              required
+                              [required]="item._id > 0"
                               pattern="[0-9]{2,3}"
                               [inputMaxLength]="3"
                               allowedChars="[\d]"
@@ -131,7 +131,7 @@
                                 (formSubmitted || std.touched) && !std.valid
                               "
                               [(ngModel)]="item.landline.std"
-                              required
+                              [required]="item._id > 0"
                               pattern="[0-9]{3,4}"
                               [inputMaxLength]="4"
                               allowedChars="[\d]"
@@ -152,7 +152,7 @@
                                 !landlineNumber.valid
                               "
                               [(ngModel)]="item.landline.number"
-                              required
+                              [required]="item._id > 0"
                               pattern="[0-9]{6}"
                               [inputMaxLength]="6"
                               allowedChars="[\d]"
@@ -277,6 +277,11 @@
                           required
                         ></ng-selectize>
                         <div class="invalid-feedback">Channel is required.</div>
+                        <div class="w-100 text-right">
+                          <small class="cursor-pointer" (click)="addNewArea()"
+                            >+ Add new Channel</small
+                          >
+                        </div>
                       </div>
                     </div>
                     <div class="col">
@@ -292,7 +297,7 @@
                             !FSSAILicense.valid
                           "
                           [(ngModel)]="item.FSSAILicense"
-                          required
+                          [required]="item._id > 0"
                           allowedChars="[\w\d]"
                         />
                         <div class="invalid-feedback">
@@ -313,6 +318,7 @@
                           [(ngModel)]="item.endDate"
                           datePicker="{format: 'yyyy-mm-dd'}"
                           readOnly
+                          [required]="item._id > 0"
                           #datePicker
                         />
                         <div class="invalid-feedback">
@@ -335,7 +341,7 @@
                             !latitude.valid
                           "
                           [(ngModel)]="item.latitude"
-                          required
+                          [required]="item._id > 0"
                         />
                         <div class="invalid-feedback">
                           {{ "Latitude is required." }}
@@ -356,7 +362,7 @@
                             !longitude.valid
                           "
                           [(ngModel)]="item.longitude"
-                          required
+                          [required]="item._id > 0"
                         />
                         <div class="invalid-feedback">
                           {{ "Longitude is required." }}
