@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ChangeDetectorRef } from '@angular/core';
 declare var $: any;
 @Component({
   selector: 'app-action-dots',
@@ -10,7 +10,8 @@ export class ActionDotsComponent implements OnInit {
   @Input() item: any;
   showPopup: boolean = false;
   constructor(
-    private elem: ElementRef
+    private elem: ElementRef,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -19,6 +20,10 @@ export class ActionDotsComponent implements OnInit {
     });
   }
 
+  updateComponent(){
+
+    this.ref.markForCheck();
+  }
   openPopup() {
     let current = this.showPopup || false;
     if(false && this.showPopup) {

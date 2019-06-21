@@ -55,7 +55,8 @@ export class CompanyListComponent implements OnInit {
         pincode: '',
         city: '',
         address_1: '',
-        address_2: ''
+        address_2: '',
+        emailId: ''
       }
     });
   }

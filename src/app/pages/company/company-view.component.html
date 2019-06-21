@@ -88,6 +88,34 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-group">
+                        <label>Company Email ID</label>
+                        <input
+                          autocomplete="off"
+                          type="email"
+                          name="emailId"
+                          #emailId="ngModel"
+                          placeholder="Enter Company Email ID"
+                          class="form-control"
+                          [class.is-invalid]="
+                            (companySubmitted || emailId.touched) &&
+                            !emailId.valid
+                          "
+                          [(ngModel)]="item.emailId"
+                          required
+                        />
+                        <div class="invalid-feedback">
+                          {{
+                            emailId.missing
+                              ? "Company email ID is required."
+                              : "Email ID is invalid"
+                          }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
                         <label>GSTIN</label>
                         <input
                           type="text"

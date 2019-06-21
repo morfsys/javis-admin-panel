@@ -16,7 +16,15 @@ export class DataTableDirective implements OnInit {
 
   initTable() {
     console.log('init called');
+    // if($(this.el.nativeElement).dataTable) {
+    //   $(this.el.nativeElement).dataTable('destroy');
+    // }
     $(this.el.nativeElement).dataTable();
+  }
+  
+
+  reRender(el) {
+
   }
 
 

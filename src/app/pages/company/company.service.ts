@@ -18,7 +18,8 @@ export class CompanyService {
       address_1: "Address line 1",
       address_2: "Address line 2",
       pincode: "400001",
-      city: "MUMBAI"
+      city: "MUMBAI",
+      emailId: ""
     }
   ];
 
@@ -46,7 +47,8 @@ export class CompanyService {
               address_2: e.address2,
               pincode: e.pinCode,
               city: e.cityName,
-              cityId: e.cityId
+              cityId: e.cityId,
+              emailId: e.emailId,
             };
           })
         )
@@ -68,6 +70,7 @@ export class CompanyService {
           "address2": item.address_2,
           "cityId": item.city,
           "pinCode": item.pincode,
+          "emailId": item.emailId
         }
       )
       : this.http.post(
@@ -83,6 +86,7 @@ export class CompanyService {
           "address2": item.address_2,
           "cityId": item.city,
           "pinCode": item.pincode,
+          "emailId": item.emailId
         }
       );
   }

@@ -21,7 +21,8 @@ export class CompanyViewComponent implements OnInit {
         pincode: '',
         address_1: '',
         address_2: '',
-        city: ''
+        city: '',
+        emailId: ''
     };
     @Input('cancel-allowed') cancelAllowed = false;
     @Output() postSubmit = new EventEmitter();
@@ -60,7 +61,8 @@ export class CompanyViewComponent implements OnInit {
             gstin: this.item.gstin.toUpperCase(),
             pan: this.item.pan.toUpperCase(),
             address_1: this.item.address_1.toUpperCase(),
-            address_2: this.item.address_2.toUpperCase()
+            address_2: this.item.address_2.toUpperCase(),
+            emailId: this.item.emailId.toUpperCase()
         })).subscribe(company => {
             if(company.level != "Error") {
                 this.postSubmit.emit();
