@@ -63,6 +63,7 @@ import { InputMaxLengthDirective } from "./directives/input-max-length.directive
 import { AllowedCharsDirective } from "./directives/allowed-chars.directive";
 import { DatePickerDirective } from "./directives/date-picker.directive";
 import { MyHttpInterceptor } from "./http-interceptor";
+import { AddFormChannelComponent } from "./pages/channel/add-form.channel.component";
 
 @NgModule({
   imports: [
@@ -102,6 +103,7 @@ import { MyHttpInterceptor } from "./http-interceptor";
     ChannelComponent,
     ChannelViewComponent,
     ChannelListComponent,
+    AddFormChannelComponent,
     AreaComponent,
     AreaListComponent,
     AreaViewComponent,
