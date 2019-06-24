@@ -33,11 +33,11 @@ export class RetailerViewComponent implements OnInit {
     endDate: ""
   };
 
-  @Input('view-item') itemChannel = {
-    _id: 0,
-    name: '',
-    description: ""
-};
+//   @Input('view-item') itemChannel = {
+//     _id: 0,
+//     name: '',
+//     description: ""
+// };
 
   @Input("cancel-allowed") cancelAllowed = false;
   @Output() postSubmit = new EventEmitter();
@@ -86,34 +86,34 @@ export class RetailerViewComponent implements OnInit {
       });
   }
 
-  addItemChannel(form) {
-    form.failed = false;
-        form.failedMessage = '';
-        this.formSubmitted = true;
-        if (!form.valid) {
-            return false;
-        }
-        // TODO: Logic to add company
-        this.channelService.addItem(Object.assign({ _id: 0 }, this.item, {
-            name: this.itemChannel.name.toUpperCase(),
-            description: this.itemChannel.description.toUpperCase()
-        })).subscribe(item => {
-            if(item.level != "Error") {
-                // this.postSubmit.emit(this.itemChannel);
-                this.populateChannelOptions();
-                this.itemChannel = {
-                  _id: 0,
-                  name: " ",
-                  description: " "
-                }
-              }else{
-                this.errorHandler.showNoty({
-                    text: item.message
-                  })
-              }
-        })
-    $("#add-channel-modal").modal("hide");
-  }
+  // addItemChannel(form) {
+  //   form.failed = false;
+  //       form.failedMessage = '';
+  //       this.formSubmitted = true;
+  //       if (!form.valid) {
+  //           return false;
+  //       }
+  //       // TODO: Logic to add company
+  //       this.channelService.addItem(Object.assign({ _id: 0 }, this.item, {
+  //           name: this.itemChannel.name.toUpperCase(),
+  //           description: this.itemChannel.description.toUpperCase()
+  //       })).subscribe(item => {
+  //           if(item.level != "Error") {
+  //               // this.postSubmit.emit(this.itemChannel);
+  //               this.populateChannelOptions();
+  //               this.itemChannel = {
+  //                 _id: 0,
+  //                 name: " ",
+  //                 description: " "
+  //               }
+  //             }else{
+  //               this.errorHandler.showNoty({
+  //                   text: item.message
+  //                 })
+  //             }
+  //       })
+  //   $("#add-channel-modal").modal("hide");
+  // }
 
   selectizeConfig: any = {
     labelField: "label",

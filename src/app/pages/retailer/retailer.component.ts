@@ -38,6 +38,7 @@ export class RetailerComponent implements OnInit {
   }
 
   editItem(item) {
+    console.log(item)
     this.item = item;
     this.viewItem = true;
   }

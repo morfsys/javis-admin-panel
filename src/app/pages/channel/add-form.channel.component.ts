@@ -20,7 +20,7 @@ declare var $: any;
         <label>Channel name</label>
         <input type="text" name="channelName" #channelName="ngModel" placeholder="Enter Channel name"
           class="form-control" [class.is-invalid]="(formSubmitted || channelName.touched) && !channelName.valid"
-          [(ngModel)]="item.name" required pattern="[a-zA-Z\s]+">
+          [(ngModel)]="item.name" required pattern="[a-zA-Z0-9\\s]+">
         <div class="invalid-feedback">
           {{'Channel name is required.'}}
         </div>

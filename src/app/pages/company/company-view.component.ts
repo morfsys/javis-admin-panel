@@ -77,7 +77,7 @@ export class CompanyViewComponent implements OnInit {
     populateCityOptions() {
         this.cityService.getItems().subscribe(
             cities => {
-                this.cityOptions = cities.map(c => c = { label: c.name, value: c._id, code: c.code });
+                this.cityOptions = cities.map(c => c = { label: `${c.name} (${c.code})`, value: c._id, code: c.code });
                 this.showCitySelect = false;
                 setTimeout(()=>this.showCitySelect=true, 100);
                 $('#add-city-modal').modal('hide');

@@ -15,7 +15,7 @@
         <div class="card-block">
 
           <div class="table-overflow">
-            <table class="table" appDataTable #companyList="appDataTable">
+            <table class="table" datatable [dtTrigger]="dtTrigger" #companyList>
               <thead>
                 <tr>
                   <th>Company name</th>
