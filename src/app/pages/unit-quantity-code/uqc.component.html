@@ -1,2 +1,2 @@
-<app-uqc-view *ngIf="viewItem || !(items == undefined || items.length > 0)" [view-item]="item" [cancel-allowed]="items.length>0" (postSubmit)="itemSubmitted()" (clickedCancel)="viewItem = false;"></app-uqc-view>
-<app-uqc-list [style.display]="!viewItem && (items == undefined || items.length > 0)?'inherit':'none'" [items]="items" (updateItem)="editItem($event.item)" (updateList)="getItems()" #masterList></app-uqc-list>      
+<app-uqc-view *ngIf="viewItem || !(items == undefined || items.length > 0)" [view-item]="item" [cancel-allowed]="items.length>0" (postSubmit)="itemSubmitted()" (clickedCancel)="viewItem = false;getItems();"></app-uqc-view>
+<app-uqc-list *ngIf="!viewItem && (items == undefined || items.length > 0)" [items]="items" (updateItem)="editItem($event.item)" (updateList)="getItems()" #masterList></app-uqc-list>      

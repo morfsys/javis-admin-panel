@@ -1,2 +1,2 @@
-<app-company-view *ngIf="viewCompany || !(companies == undefined || companies.length > 0)" [view-item]="company" [cancel-allowed]="companies.length>0" (postSubmit)="companySubmitted()" (clickedCancel)="viewCompany = false;"></app-company-view>
+<app-company-view *ngIf="viewCompany || !(companies == undefined || companies.length > 0)" [view-item]="company" [cancel-allowed]="companies.length>0" (postSubmit)="companySubmitted()" (clickedCancel)="viewCompany = false;getCompanies();"></app-company-view>
 <app-company-list *ngIf="!viewCompany && (companies == undefined || companies.length > 0)" [items]="companies" (updateItem)="editCompany($event.item)" (updateList)="getCompanies()" #companyList></app-company-list>      

@@ -1,5 +1,7 @@
 import { StateService } from './state.service';
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
+import { DataTableDirective } from 'angular-datatables';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-state-list',
@@ -67,8 +69,20 @@ export class StateListComponent implements OnInit {
     this.mService.deleteItem(id).subscribe(r=>this.updateList.emit(), err=>console.log(err));
   }
 // exported
+@ViewChild(DataTableDirective)
+  dtElement: DataTableDirective;
+  dtTrigger = new Subject();
   reRenderTable() {
-    this.masterList.initTable();
+    if(this.dtElement.dtInstance) {
+      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        // Destroy the table first
+        dtInstance.destroy();
+        // Call the dtTrigger to rerender again
+        this.dtTrigger.next();
+      });
+    }else{
+      this.dtTrigger.next();
+    }
   }
 
 }
